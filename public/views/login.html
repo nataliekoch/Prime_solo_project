@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <form action="/SignUp" method="post">
-      <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-      </div>
+<div>
+    <label>Username:</label>
+    <input type="text" ng-model="data.username"/>
+</div>
 
-      <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-      </div>
-
-      <div>
-        <input type="submit">
-      </div>
-    </form>
-  </body>
-</html>
+<div>
+    <label>Password:</label>
+    <input type="password" ng-model="data.password"/>
+</div>
+<div>
+    <button ng-click="submitData()">Login</button>
+    <a href="/signUp">New User? Click here!</a>
+</div>

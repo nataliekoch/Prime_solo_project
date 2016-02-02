@@ -8,4 +8,38 @@ router.get('/', function(request, response){
   response.sendFile(path.join(__dirname, '../../public/views/index.html'));
 });
 
+router.get('/login',function(request, response){
+	response.sendFile(path.join(__dirname, '../../public/views/login.html'));
+})
+
+router.get('/success', function(request, response){
+	response.send('success');
+});
+
+router.get('/failure', function(request, response){
+	response.send(request.user);
+});
+
+router.get('/register', function(request, response){
+	response.sendFile(path.join(__dirname, '../../public/views/signUp.html'));
+});
+
+router.get('/searchPage', function(request, response){
+	
+});
+
+router.post('/', passport.authenticate('local', {
+	successRedirect: '/success', failureRedirect:'/failure'
+}));
+
+router.post('/newUser', function(request, response){
+	User.create(request.body, function(err, post){
+		if(err) {
+			console.log(err);
+		} else {
+			response.redirect('/success');
+		}
+	});
+});
+
 module.exports = router;

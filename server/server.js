@@ -21,7 +21,7 @@ app.use(session({
   cookie: {maxAge: 60000, secure:false}
 }));
 
-app.use(passport.initalize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
@@ -77,7 +77,7 @@ passport.use('local', new localStrategy({
           }
         });
       });
-    }
+
 }));
 
 var server = app.listen(5000, function(){
