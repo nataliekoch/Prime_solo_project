@@ -42,7 +42,61 @@ app.controller('LoginController', ['$scope', '$http', '$location', function($sco
 }]);
 
 app.controller('HomeController', ['$scope', '$http', function($scope, $http){
+  $scope.data = {};
 
+
+  $scope.getPets = function(){
+    var filter = {
+      "apikey":"vngSNgO9",
+      "objectType":"animals",
+      "objectAction":"publicSearch",
+      "search":
+      {
+        "resultStart": "0",
+        "resultLimit": "10",
+        "resultSort": "animalID",
+        "resultOrder": "asc",
+        "filters":
+        [
+          {
+            "fieldName": "animalStatus",
+            "operation": "equals",
+            "criteria": "Available"
+          },
+          {
+            "fieldName": "animalLocationDistance",
+            "operation": "radius",
+            "criteria": "50"
+          },
+          {
+            "fieldName": "animalLocation",
+            "operation": "equals",
+            "criteria": "20715"
+          }
+        ],
+        "filterProcessing": "1",
+        "fields":
+        [
+          "animalID","animalOrgID"
+        ]
+
+      }
+    }
+
+    var encoded = angular.toJson(filter);
+    $http({
+      method: 'JSONP',
+      url: 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data=' + encoded
+    })
+      .then(
+        function(response) {
+          console.log(response);
+        },
+        function(response) {
+          console.log(response);
+        }
+      );
+  }
 }]);
 
 app.controller('SignUpController', ['$scope', '$http', '$location', function($scope, $http, $location){

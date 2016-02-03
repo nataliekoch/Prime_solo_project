@@ -4,4 +4,17 @@
     <a href="/login">Login</a>
     <a href="/signUp">Sign Up</a>
 
+    <h2>Find a pet!</h2>
+    <form>
+        <label>Animal Type</label>
+        <input type="text" ng-model="data.animal"/>
+
+        <label>Animal Breed</label>
+        <input type="text" ng-model="data.breeds"/>
+
+        <label>Zip Code</label>
+        <input type="text" ng-model="data.zip"/>
+
+        <button ng-click="getPets()">Submit</button>
+    </form>
 </body>

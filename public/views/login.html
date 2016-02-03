@@ -1,13 +1,15 @@
-<div>
-    <label>Username:</label>
-    <input type="text" ng-model="data.username"/>
-</div>
+<form>
+    <div>
+        <label>Username:</label>
+        <input type="text" ng-model="data.username"/>
+    </div>
 
-<div>
-    <label>Password:</label>
-    <input type="password" ng-model="data.password"/>
-</div>
-<div>
-    <button ng-click="submitData()">Login</button>
-    <a href="/signUp">New User? Click here!</a>
-</div>
+    <div>
+        <label>Password:</label>
+        <input type="password" ng-model="data.password"/>
+    </div>
+    <div>
+        <button ng-click="submitData()">Login</button>
+        <a href="/signUp">New User? Click here!</a>
+    </div>
+</form>
