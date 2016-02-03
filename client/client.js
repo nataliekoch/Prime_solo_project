@@ -22,6 +22,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'views/failure.html',
       controller: 'FailureControler'
     })
+    .when('/searchPage', {
+      templateUrl: 'views/searchPage.html',
+      controller: 'SearchController'
+    })
 
     $locationProvider.html5Mode(true);
 }]);
@@ -56,6 +60,14 @@ app.controller('SuccessController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
-app.controller('FailureControler', ['$scope', '$http', function($scope, $http){
+app.controller('FailureController', ['$scope', '$http', function($scope, $http){
 
+}]);
+
+app.controller('SearchController', ['$scope', '$http', '$location', function($scope, $http, $location){
+  $scope.getPets = function(){
+    $http.jsonp('http://api.petfinder.com/pet.getRandom?format=json&output=full&callback=JSON_CALLBACK&key=a8104ae25d98a48d91e8b689b547417c').then(function(response){
+      console.log(response);
+    });
+  }
 }]);

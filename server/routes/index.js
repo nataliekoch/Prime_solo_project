@@ -13,7 +13,7 @@ router.get('/login',function(request, response){
 })
 
 router.get('/success', function(request, response){
-	response.send('success');
+	response.send(request.user);
 });
 
 router.get('/failure', function(request, response){
@@ -25,11 +25,11 @@ router.get('/register', function(request, response){
 });
 
 router.get('/searchPage', function(request, response){
-	
+	response.send('searchPage');
 });
 
 router.post('/', passport.authenticate('local', {
-	successRedirect: '/success', failureRedirect:'/failure'
+	successRedirect: '/searchPage', failureRedirect:'/failure'
 }));
 
 router.post('/newUser', function(request, response){
