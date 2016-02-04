@@ -1,0 +1,16 @@
+body {
+    font-family: "Charter", Georgia, Serif;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url('public/stylesheets/charter/webfonts/charter_regular-webfont.woff') format('woff');
+};
+
+.homeLogin {
+  text-decoration: none;
+}
+
+.homeSignUp {
+  text-decoration: none;
+}

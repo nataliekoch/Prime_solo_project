@@ -48,6 +48,8 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
   $scope.getPets = function(){
     var filter = {
       "apikey":"vngSNgO9",
+      "token":"EVguG4C8vyuQ",
+      "tokenHash":"577ad920503e0331dbd20f5534e32b5d",
       "objectType":"animals",
       "objectAction":"publicSearch",
       "search":
@@ -59,25 +61,15 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
         "filters":
         [
           {
-            "fieldName": "animalStatus",
-            "operation": "equals",
-            "criteria": "Available"
+             "fieldName": "speciesSingular",
+             "operation": "equals",
+             "criteria": "Dog"
           },
-          {
-            "fieldName": "animalLocationDistance",
-            "operation": "radius",
-            "criteria": "50"
-          },
-          {
-            "fieldName": "animalLocation",
-            "operation": "equals",
-            "criteria": "20715"
-          }
         ],
         "filterProcessing": "1",
         "fields":
         [
-          "animalID","animalOrgID"
+          "animalID","animalOrgID","animalLocation","animalStatus","animalSpecies","animalLocationDistance"
         ]
 
       }

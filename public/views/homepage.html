@@ -1,20 +1,20 @@
 <body>
-    <h1>Welcome to PawFinder!</h1>
+    <h1 class="homeh1">Welcome to PawFinder!</h1>
 
-    <a href="/login">Login</a>
-    <a href="/signUp">Sign Up</a>
+    <a class="homeLogin" href="/login">Login</a>
+    <a class="homeSignUp" href="/signUp">Sign Up</a>
 
-    <h2>Find a pet!</h2>
-    <form>
-        <label>Animal Type</label>
+    <h2 class="homeh2">Find a pet!</h2>
+    <form class="homeForm">
+        <label class="homeAnimalType">Animal Type</label>
         <input type="text" ng-model="data.animal"/>
 
-        <label>Animal Breed</label>
+        <label class="homeAnimalBreed">Animal Breed</label>
         <input type="text" ng-model="data.breeds"/>
 
-        <label>Zip Code</label>
+        <label class="homeZipCode">Zip Code</label>
         <input type="text" ng-model="data.zip"/>
 
-        <button ng-click="getPets()">Submit</button>
+        <button class=homeSubmitBttn ng-click="getPets()">Submit</button>
     </form>
 </body>
