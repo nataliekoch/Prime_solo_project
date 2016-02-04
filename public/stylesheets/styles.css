@@ -8,7 +8,7 @@ body {
 }
 
 .homeLogin, .homeSignUp {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: white;
   background-color: rgb(8, 171, 215);
@@ -22,6 +22,27 @@ body {
   letter-spacing: .5px;
 }
 
-.homeLogin, .homeSignUp {
-  
+.homeLogin {
+  margin-left: 860px;
+  margin-right: 10px;
+}
+
+.homeLogin:active, .homeSignUp:active {
+  background-color: rgb(10, 106, 148);
+  color: rgb(203, 203, 203);
+}
+
+.homeForm {
+  width: 750px;
+  margin: auto;
+}
+
+.homeh1 {
+  display: inline-block;
+}
+
+.homeh2 {
+  width: 750px;
+  margin: auto;
+  text-align: center;
 }

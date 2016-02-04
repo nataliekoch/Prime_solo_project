@@ -5,16 +5,18 @@
     <a class="homeSignUp" href="/signUp">Sign Up</a>
 
     <h2 class="homeh2">Find a pet!</h2>
-    <form class="homeForm">
-        <label class="homeAnimalType">Animal Type</label>
-        <input type="text" ng-model="data.animal"/>
+    <div class="homeForm">
+        <form class="homeForm">
+            <label class="homeAnimalType">Animal Type</label>
+            <input type="text" ng-model="data.animal"/>
 
-        <label class="homeAnimalBreed">Animal Breed</label>
-        <input type="text" ng-model="data.breeds"/>
+            <label class="homeAnimalBreed">Animal Breed</label>
+            <input type="text" ng-model="data.breeds"/>
 
-        <label class="homeZipCode">Zip Code</label>
-        <input type="text" ng-model="data.zip"/>
+            <label class="homeZipCode">Zip Code</label>
+            <input type="text" ng-model="data.zip"/>
 
-        <button class=homeSubmitBttn ng-click="getPets()">Submit</button>
-    </form>
+            <button class=homeSubmitBttn ng-click="getPets()">Submit</button>
+        </form>
+    </div>
 </body>
