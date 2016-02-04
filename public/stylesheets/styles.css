@@ -1,16 +1,27 @@
+@font-face {
+  font-family: "Charter";
+  src: url('charter/webfonts/charter_regular-webfont.woff') format('woff');
+}
+
 body {
     font-family: "Charter", Georgia, Serif;
 }
 
-@font-face {
-  font-family: "Charter";
-  src: url('public/stylesheets/charter/webfonts/charter_regular-webfont.woff') format('woff');
-};
-
-.homeLogin {
+.homeLogin, .homeSignUp {
+  display: block;
   text-decoration: none;
+  color: white;
+  background-color: rgb(8, 171, 215);
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  border-radius: 25px;
+  font-size: 20px;
+  letter-spacing: .5px;
 }
 
-.homeSignUp {
-  text-decoration: none;
+.homeLogin, .homeSignUp {
+  
 }
