@@ -1,22 +1,31 @@
 <body>
-    <h1 class="homeh1">Welcome to PawFinder!</h1>
+    <div class="background-image">
+        <h1 class="home-h1">Welcome to PawFinder!</h1>
 
-    <a class="homeLogin" href="/login">Login</a>
-    <a class="homeSignUp" href="/signUp">Sign Up</a>
+        <a class="home-login" href="/login">Login</a>
+        <a class="home-signup" href="/signUp">Sign Up</a>
+        <button ng-click="breedLookup()">TEST BUTTON</button>
 
-    <h2 class="homeh2">Find a pet!</h2>
-    <div class="homeForm">
-        <form class="homeForm">
-            <label class="homeAnimalType">Animal Type</label>
-            <input type="text" ng-model="data.animal"/>
+        <div class="home-searchbar">
+            <h2 class="home-h2">Find a pet!</h2>
+            <div class="home-form">
+                <form class="home-form">
+                    <label class="home-animaltype">Animal Type</label>
+                    <select name="speciesSelect" ng-model="data.species">
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                    </select>
+                    <!-- <input type="text" ng-model="data.species"/> -->
 
-            <label class="homeAnimalBreed">Animal Breed</label>
-            <input type="text" ng-model="data.breeds"/>
+                    <label class="home-animalbreed">Animal Breed</label>
+                    <input type="text" ng-model="data.breed"/>
 
-            <label class="homeZipCode">Zip Code</label>
-            <input type="text" ng-model="data.zip"/>
+                    <label class="home-zipcode">Zip Code</label>
+                    <input type="text" ng-model="data.zip"/>
 
-            <button class=homeSubmitBttn ng-click="getPets()">Submit</button>
-        </form>
+                    <button class=home-submitbtn ng-click="getPets()">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>

@@ -48,8 +48,6 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
   $scope.getPets = function(){
     var filter = {
       "apikey":"vngSNgO9",
-      "token":"EVguG4C8vyuQ",
-      "tokenHash":"577ad920503e0331dbd20f5534e32b5d",
       "objectType":"animals",
       "objectAction":"publicSearch",
       "search":
@@ -61,21 +59,41 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
         "filters":
         [
           {
-             "fieldName": "speciesSingular",
-             "operation": "equals",
-             "criteria": "Dog"
-          },
+                "fieldName": "animalStatus",
+                "operation": "equals",
+                "criteria": "Available"
+            },
+            {
+                "fieldName": "animalLocationDistance",
+                "operation": "radius",
+                "criteria": "50"
+            },
+            {
+                "fieldName": "animalLocation",
+                "operation": "equals",
+                "criteria": $scope.data.zip
+            },
+            {
+                "fieldName": "animalSpecies",
+                "operation": "equals",
+                "criteria": $scope.data.species
+            },
+            {
+                "fieldName": "animalBreed",
+                "operation": "equals",
+                "criteria": $scope.data.breed
+            }
         ],
-        "filterProcessing": "1",
         "fields":
         [
-          "animalID","animalOrgID","animalLocation","animalStatus","animalSpecies","animalLocationDistance"
+          "animalSpecies","animalBreed", "animalLocation"
         ]
 
       }
     }
 
     var encoded = angular.toJson(filter);
+    console.log(encoded);
     $http({
       method: 'JSONP',
       url: 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data=' + encoded
@@ -83,12 +101,50 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
       .then(
         function(response) {
           console.log(response);
-        },
-        function(response) {
-          console.log(response);
         }
       );
   }
+
+  $scope.breedLookup = function(){
+    var breedFilter = {
+      "apikey": "vngSNgO9",
+      "objectType":"animalBreeds",
+      "objectAction":"publicSearch",
+      "search":
+      {
+        "resultStart": "0",
+        "resultLimit": "100",
+        "resultSort": "breedName",
+        "resultOrder": "asc",
+        "filters":
+        [
+          {
+            "fieldName": "breedSpecies",
+            "operation": "equals",
+            "criteria": "Cat"
+          },
+          {
+            "fieldName": "breedSpecies",
+            "operation": "equals",
+            "criteria": "Dog"
+          },
+        ],
+        "fields": ["breedID","breedName","breedSpecies","breedSpeciesID"]
+      }
+    }
+  }
+
+  var breedEncoded = angular.toJson(breedFilter);
+  $http({
+    method: 'JSONP',
+    url: 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data=' + breedencoded
+  })
+    .then(
+      function(response) {
+        console.log(response);
+      }
+    );
+
 }]);
 
 app.controller('SignUpController', ['$scope', '$http', '$location', function($scope, $http, $location){

@@ -1,13 +1,14 @@
 @font-face {
   font-family: "Charter";
-  src: url('charter/webfonts/charter_regular-webfont.woff') format('woff');
+  src: url('fonts/charter/webfonts/charter_regular-webfont.woff') format('woff');
 }
 
 body {
-    font-family: "Charter", Georgia, Serif;
+  font-family: "Charter", Georgia, Serif;
+  margin: 0;
 }
 
-.homeLogin, .homeSignUp {
+.home-login, .home-signup {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -22,27 +23,44 @@ body {
   letter-spacing: .5px;
 }
 
-.homeLogin {
+.home-login {
   margin-left: 860px;
   margin-right: 10px;
 }
 
-.homeLogin:active, .homeSignUp:active {
+.home-login:active, .home-signup:active {
   background-color: rgb(10, 106, 148);
   color: rgb(203, 203, 203);
 }
 
-.homeForm {
+.home-searchbar {
+  margin-top: 200px;
+  height: 100px;
+  width: 1000px;
+  margin: 200px auto 0 auto;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px 0px;
+}
+
+.home-form {
   width: 750px;
   margin: auto;
 }
 
-.homeh1 {
+.home-h1 {
   display: inline-block;
 }
 
-.homeh2 {
-  width: 750px;
-  margin: auto;
+.home-h2 {
   text-align: center;
+  margin-top: 0;
+}
+
+.background-image {
+  height: 600px;
+  background-image: url("images/doginwheatfield-EDIT.jpg");
+  background-position: center;
+  background-size: cover;
 }
