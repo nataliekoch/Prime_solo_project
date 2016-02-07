@@ -20,12 +20,12 @@ router.get('/failure', function(request, response){
 	response.send(request.user);
 });
 
-router.get('/register', function(request, response){
+router.get('/signUp', function(request, response){
 	response.sendFile(path.join(__dirname, '../../public/views/signUp.html'));
 });
 
 router.get('/searchPage', function(request, response){
-	response.send('searchPage');
+	response.sendFile(path.join(__dirname, '../../public/views/searchPage.html'));
 });
 
 router.post('/', passport.authenticate('local', {

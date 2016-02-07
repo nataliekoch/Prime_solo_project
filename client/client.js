@@ -36,16 +36,20 @@ app.controller('LoginController', ['$scope', '$http', '$location', function($sco
   $scope.submitData = function(){
     $http.post('/', $scope.data).then(function(response){
       console.log(response);
-      $location.path(response.data);
+      $location.path('searchPage');
     });
   }
 }]);
 
-app.controller('HomeController', ['$scope', '$http', function($scope, $http){
-  $scope.data = {};
-
-
+app.controller('HomeController', ['$scope', '$location', function($scope, $location){
   $scope.getPets = function(){
+    $location.path('searchPage');
+  }
+}]);
+
+app.factory('apiService', ['$http', function($http){
+
+  var urlConstructor = function(species, breed, zip) {
     var filter = {
       "apikey":"vngSNgO9",
       "objectType":"animals",
@@ -59,91 +63,50 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http){
         "filters":
         [
           {
-                "fieldName": "animalStatus",
-                "operation": "equals",
-                "criteria": "Available"
-            },
-            {
-                "fieldName": "animalLocationDistance",
-                "operation": "radius",
-                "criteria": "50"
-            },
-            {
-                "fieldName": "animalLocation",
-                "operation": "equals",
-                "criteria": $scope.data.zip
-            },
-            {
-                "fieldName": "animalSpecies",
-                "operation": "equals",
-                "criteria": $scope.data.species
-            },
-            {
-                "fieldName": "animalBreed",
-                "operation": "equals",
-                "criteria": $scope.data.breed
-            }
+            "fieldName": "animalStatus",
+            "operation": "equals",
+            "criteria": "Available"
+          },
+          {
+            "fieldName": "animalLocationDistance",
+            "operation": "radius",
+            "criteria": "50"
+          },
+          {
+            "fieldName": "animalLocation",
+            "operation": "equals",
+            "criteria": zip
+          },
+          {
+            "fieldName": "animalSpecies",
+            "operation": "equals",
+            "criteria": species
+          },
+          {
+            "fieldName": "animalBreed",
+            "operation": "equals",
+            "criteria": breed
+          }
         ],
         "fields":
         [
           "animalSpecies","animalBreed", "animalLocation"
         ]
-
       }
     }
 
     var encoded = angular.toJson(filter);
-    console.log(encoded);
-    $http({
-      method: 'JSONP',
-      url: 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data=' + encoded
-    })
-      .then(
-        function(response) {
-          console.log(response);
-        }
-      );
-  }
 
-  $scope.breedLookup = function(){
-    var breedFilter = {
-      "apikey": "vngSNgO9",
-      "objectType":"animalBreeds",
-      "objectAction":"publicSearch",
-      "search":
-      {
-        "resultStart": "0",
-        "resultLimit": "100",
-        "resultSort": "breedName",
-        "resultOrder": "asc",
-        "filters":
-        [
-          {
-            "fieldName": "breedSpecies",
-            "operation": "equals",
-            "criteria": "Cat"
-          },
-          {
-            "fieldName": "breedSpecies",
-            "operation": "equals",
-            "criteria": "Dog"
-          },
-        ],
-        "fields": ["breedID","breedName","breedSpecies","breedSpeciesID"]
-      }
-    }
-  }
+    var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+    url += encoded;
 
-  var breedEncoded = angular.toJson(breedFilter);
-  $http({
-    method: 'JSONP',
-    url: 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data=' + breedencoded
-  })
-    .then(
-      function(response) {
-        console.log(response);
-      }
-    );
+    return url;
+  };
+
+  return function(species, breed, zip) {
+    var url = urlConstructor(species, breed, zip)
+    return url;
+  };
 
 }]);
 
@@ -166,10 +129,20 @@ app.controller('FailureController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
-app.controller('SearchController', ['$scope', '$http', '$location', function($scope, $http, $location){
-  $scope.getPets = function(){
-    $http.jsonp('http://api.petfinder.com/pet.getRandom?format=json&output=full&callback=JSON_CALLBACK&key=a8104ae25d98a48d91e8b689b547417c').then(function(response){
+app.controller('SearchController', ['$scope', '$http', 'apiService', function($scope, $http, apiService){
+  // http://localhost:5000/searchPage?species=dog&breed=schnauzer&zip=55405
+
+  // TODO: Get parameters from URL, example above
+
+  var apiUrl = apiService('Cat','Domestic Short Hair','55405');
+
+  $http({
+    method: 'JSONP',
+    url: apiUrl
+  })
+  .then(
+    function(response) {
       console.log(response);
-    });
-  }
+    }
+  );
 }]);

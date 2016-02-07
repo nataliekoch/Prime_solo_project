@@ -3,6 +3,11 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
+			options: {
+				mangle: false,
+				compress: false,
+				beautify: true
+			},
 			build: {
 				src: 'client/client.js',
 				dest: 'public/assets/scripts/client.min.js'
