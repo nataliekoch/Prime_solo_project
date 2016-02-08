@@ -6,6 +6,8 @@
 body {
   font-family: "Charter", Georgia, Serif;
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .home-login, .home-signup {
@@ -59,7 +61,7 @@ body {
 }
 
 .background-image {
-  height: 600px;
+  height: 100%;
   background-image: url("images/doginwheatfield-EDIT.jpg");
   background-position: center;
   background-size: cover;

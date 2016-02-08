@@ -57,7 +57,7 @@ app.factory('apiService', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "10",
+        "resultLimit": "20",
         "resultSort": "animalID",
         "resultOrder": "asc",
         "filters":
@@ -69,8 +69,8 @@ app.factory('apiService', ['$http', function($http){
           },
           {
             "fieldName": "animalLocationDistance",
-            "operation": "radius",
-            "criteria": "50"
+            "operation": "lessthan",
+            "criteria": "100"
           },
           {
             "fieldName": "animalLocation",
@@ -90,7 +90,7 @@ app.factory('apiService', ['$http', function($http){
         ],
         "fields":
         [
-          "animalSpecies","animalBreed", "animalLocation"
+          "animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
         ]
       }
     }
@@ -134,7 +134,7 @@ app.controller('SearchController', ['$scope', '$http', 'apiService', function($s
 
   // TODO: Get parameters from URL, example above
 
-  var apiUrl = apiService('Cat','Domestic Short Hair','55405');
+  var apiUrl = apiService('Cat','Domestic short hair','55421');
 
   $http({
     method: 'JSONP',
@@ -143,6 +143,7 @@ app.controller('SearchController', ['$scope', '$http', 'apiService', function($s
   .then(
     function(response) {
       console.log(response);
+      $scope.searchResults = response.data;
     }
   );
 }]);
