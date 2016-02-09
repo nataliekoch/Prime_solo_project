@@ -26,6 +26,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'views/searchPage.html',
       controller: 'SearchController'
     })
+    .when('/profile', {
+      templateUrl: 'views/profile.html',
+      controller: 'ProfileController'
+    })
 
     $locationProvider.html5Mode(true);
 }]);
@@ -41,6 +45,17 @@ app.controller('LoginController', ['$scope', '$http', '$location', function($sco
   }
 }]);
 
+app.controller('SignUpController', ['$scope', '$http', '$location', function($scope, $http, $location){
+  $scope.data = {};
+
+  $scope.newUser = function(){
+    $http.post('/newUser', $scope.data).then(function(response){
+      console.log(response);
+      $location.path(response.data);
+    });
+  }
+}]);
+
 app.controller('HomeController', ['$scope', '$location', function($scope, $location){
   $scope.getPets = function(){
     $location.path('searchPage');
@@ -49,6 +64,52 @@ app.controller('HomeController', ['$scope', '$location', function($scope, $locat
     $location.search('zip', $scope.data.zip);
   }
 }]);
+
+app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', function($scope, $http, $location, apiService){
+  var animalSpecies = $location.search().species;
+  var animalBreed = $location.search().breed;
+  var animalZip = $location.search().zip;
+
+  var apiUrl = apiService(animalSpecies, animalBreed, animalZip);
+
+  $http({
+    method: 'JSONP',
+    url: apiUrl
+  })
+  .then(
+    function(response) {
+      $scope.searchResults = response.data;
+    }
+  );
+
+  $scope.goToProfile = function(){
+    var animalID = document.getElementById($scope.animal.animalID);
+    console.log(animalID);
+    // $location.path('/profile');
+    // $location.search('animalId', animalID);
+  }
+
+  $scope.getPets = function(){
+    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip);
+
+    $http({
+      method: 'JSONP',
+      url: apiUrl
+    })
+    .then(
+      function(response) {
+        console.log(response);
+        $scope.searchResults = response.data;
+      }
+    );
+  }
+}]);
+
+app.controller('ProfileController', ['$scope', '$http', '$location', 'apiService', function($scope, $http, $location, apiService){
+
+}]);
+
+
 
 app.factory('apiService', ['$http', function($http){
 
@@ -113,58 +174,10 @@ app.factory('apiService', ['$http', function($http){
 
 }]);
 
-app.controller('SignUpController', ['$scope', '$http', '$location', function($scope, $http, $location){
-  $scope.data = {};
-
-  $scope.newUser = function(){
-    $http.post('/newUser', $scope.data).then(function(response){
-      console.log(response);
-      $location.path(response.data);
-    });
-  }
-}]);
-
 app.controller('SuccessController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
 app.controller('FailureController', ['$scope', '$http', function($scope, $http){
 
-}]);
-
-app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', function($scope, $http, $location, apiService){
-  var animalSpecies = $location.search().species;
-  var animalBreed = $location.search().breed;
-  var animalZip = $location.search().zip;
-
-  var apiUrl = apiService(animalSpecies, animalBreed, animalZip);
-
-  $http({
-    method: 'JSONP',
-    url: apiUrl
-  })
-  .then(
-    function(response) {
-      $scope.searchResults = response.data;
-    }
-  );
-
-  $scope.goToProfile = function(){
-
-  }
-
-  $scope.getPets = function(){
-    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip);
-
-    $http({
-      method: 'JSONP',
-      url: apiUrl
-    })
-    .then(
-      function(response) {
-        console.log(response);
-        $scope.searchResults = response.data;
-      }
-    );
-  }
 }]);

@@ -1,15 +1,18 @@
-<h1>Sign Up!</h1>
-<form>
-    <div>
-        <label>Username:</label>
-        <input type="text" ng-model="data.username"/>
-    </div>
+<div class="form-container">
+    <form>
+        <p class="signUp-p">Sign Up!</p>
+        <div class="form-elements">
+            <div class="username-container">
+                <label>Username:</label>
+                <input type="text" ng-model="data.username"/>
+            </div>
 
-    <div>
-        <label>Password:</label>
-        <input type="password" ng-model="data.password"/>
-    </div>
-    <div>
-        <button ng-click="newUser()">Submit</button>
-    </div>
-</form> 
+            <div class="password-container">
+                <label>Password:</label>
+                <input type="password" ng-model="data.password"/>
+            </div>
+                <button ng-click="newUser()">Submit</button>
+                <a href="/login">Already a user? Click here!</a>
+        </div>
+    </form>
+</div>
