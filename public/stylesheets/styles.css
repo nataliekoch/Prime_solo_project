@@ -10,7 +10,7 @@ body {
   width: 100%;
 }
 
-.home-login, .home-signup {
+.login, .signup {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -25,21 +25,20 @@ body {
   letter-spacing: .5px;
 }
 
-.home-login {
-  margin-left: 860px;
+.login {
+  margin-left: 1050px;
   margin-right: 10px;
 }
 
-.home-login:active, .home-signup:active {
+.login:active, .signup:active {
   background-color: rgb(10, 106, 148);
   color: rgb(203, 203, 203);
 }
 
 .home-searchbar {
-  margin-top: 200px;
   height: 100px;
   width: 1000px;
-  margin: 200px auto 0 auto;
+  margin: 250px auto 0 auto;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -51,7 +50,7 @@ body {
   margin: auto;
 }
 
-.home-h1 {
+.logo {
   display: inline-block;
 }
 
@@ -70,16 +69,39 @@ body {
 /*/////////////////////////////////////
 //////////SearchPage/////////////////
 /////////////////////////////////////*/
+/*//TODO:REFACTOR LATER TO REMOVE REDUNDENCES//*/
+.searchbar{
+  height: 100px;
+  width: 1000px;
+  margin: 20px auto 0 auto;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px 0px;
+}
+
+/*//TODO:REFACTOR LATER TO REMOVE REDUNDENCES//*/
+.search-h2{
+  text-align: center;
+  margin-top: 0;
+}
+
+/*//TODO:REFACTOR LATER TO REMOVE REDUNDENCES//*/
+.search-form{
+  width: 750px;
+  margin: auto;
+}
 
 .search-results{
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-around;
-  flex-wrap: wrap;
 }
 
 .animal-containers{
   width: 300px;
+  border: black 2px solid;
+  padding-bottom: 10px;
 }
 
 .animal-image{
@@ -88,4 +110,8 @@ body {
 
 .animal-searchInfo{
   display: inline;
+}
+
+.profileBtn{
+
 }

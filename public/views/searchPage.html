@@ -1,10 +1,36 @@
-<h1>THIS IS THE SEARCH PAGE</h1>
+<h1 class="logo">PawFinder</h1>
+
+<a class="login" href="/login">Login</a>
+<a class="signup" href="/signUp">Sign Up</a>
+
+<div class="searchbar">
+    <h2 class="search-h2">Find a pet!</h2>
+    <div class="search-form">
+        <form class="search-form">
+            <label class="search-animaltype">Animal Type</label>
+            <select name="speciesSelect" ng-model="data.species">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+            </select>
+
+            <label class="search-animalbreed">Animal Breed</label>
+            <input type="text" ng-model="data.breed"/>
+
+            <label class="search-zipcode">Zip Code</label>
+            <input type="text" ng-model="data.zip"/>
+
+            <button class=search-submitbtn ng-click="getPets()">Submit</button>
+        </form>
+    </div>
+</div>
 <div class="search-results">
   <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
     <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize}}">
     <div class="animal-searchInfo">
-      {{animal.animalSpecies + ' ' + animal.animalBreed + ' ' + animal.animalLocationCitystate  + ' ' + animal.animalName + ' ' + animal.animalSex + ' ' + animal.animalPictures.urlSecureFullsize}}
+      <span>{{animal.animalName}}</span>
+      <button id="{{animalID}}" class="profile-Btn" ng-click="goToProfile()">View Profile</button><br>
+      <span>{{animal.animalBreed + ' | ' + animal.animalSex}}</span><br>
+      <span>{{animal.animalLocationCitystate}}</span>
     </div>
-    <button id="{{animalID}}" ng-click="goToProfile()">View Profile</button>
   </div>
 </div>
