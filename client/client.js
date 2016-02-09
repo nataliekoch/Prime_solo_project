@@ -145,12 +145,26 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
-      console.log(response);
       $scope.searchResults = response.data;
     }
   );
 
   $scope.goToProfile = function(){
 
+  }
+
+  $scope.getPets = function(){
+    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip);
+
+    $http({
+      method: 'JSONP',
+      url: apiUrl
+    })
+    .then(
+      function(response) {
+        console.log(response);
+        $scope.searchResults = response.data;
+      }
+    );
   }
 }]);
