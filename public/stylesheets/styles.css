@@ -61,8 +61,31 @@ body {
 }
 
 .background-image {
-  height: 100%;
+  height: 100vh;
   background-image: url("images/doginwheatfield-EDIT.jpg");
   background-position: center;
   background-size: cover;
+}
+
+/*/////////////////////////////////////
+//////////SearchPage/////////////////
+/////////////////////////////////////*/
+
+.search-results{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.animal-containers{
+  width: 300px;
+}
+
+.animal-image{
+  width: 100%
+}
+
+.animal-searchInfo{
+  display: inline;
 }

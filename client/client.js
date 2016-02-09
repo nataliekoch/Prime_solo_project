@@ -44,6 +44,9 @@ app.controller('LoginController', ['$scope', '$http', '$location', function($sco
 app.controller('HomeController', ['$scope', '$location', function($scope, $location){
   $scope.getPets = function(){
     $location.path('searchPage');
+    $location.search('species', $scope.data.species);
+    $location.search('breed', $scope.data.breed);
+    $location.search('zip', $scope.data.zip);
   }
 }]);
 
@@ -90,7 +93,7 @@ app.factory('apiService', ['$http', function($http){
         ],
         "fields":
         [
-          "animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
+          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
         ]
       }
     }
@@ -129,12 +132,12 @@ app.controller('FailureController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
-app.controller('SearchController', ['$scope', '$http', 'apiService', function($scope, $http, apiService){
-  // http://localhost:5000/searchPage?species=dog&breed=schnauzer&zip=55405
+app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', function($scope, $http, $location, apiService){
+  var animalSpecies = $location.search().species;
+  var animalBreed = $location.search().breed;
+  var animalZip = $location.search().zip;
 
-  // TODO: Get parameters from URL, example above
-
-  var apiUrl = apiService('Cat','Domestic short hair','55421');
+  var apiUrl = apiService(animalSpecies, animalBreed, animalZip);
 
   $http({
     method: 'JSONP',
@@ -146,4 +149,8 @@ app.controller('SearchController', ['$scope', '$http', 'apiService', function($s
       $scope.searchResults = response.data;
     }
   );
+
+  $scope.goToProfile = function(){
+
+  }
 }]);

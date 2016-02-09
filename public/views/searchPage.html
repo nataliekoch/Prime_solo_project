@@ -1,6 +1,10 @@
 <h1>THIS IS THE SEARCH PAGE</h1>
-<ul>
-  <li ng-repeat="animal in searchResults.data track by $index | json">{{animal.animalSpecies + ' ' + animal.animalBreed + ' ' + animal.animalLocationCitystate  + ' ' + animal.animalName + ' ' + animal.animalSex + ' ' + animal.animalPictures.urlSecureFullsize}}
-    <img src="{{animal.animalPictures[0].urlInsecureFullsize}}">
-  </li>
-</ul>
+<div class="search-results">
+  <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
+    <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize}}">
+    <div class="animal-searchInfo">
+      {{animal.animalSpecies + ' ' + animal.animalBreed + ' ' + animal.animalLocationCitystate  + ' ' + animal.animalName + ' ' + animal.animalSex + ' ' + animal.animalPictures.urlSecureFullsize}}
+    </div>
+    <button id="{{animalID}}" ng-click="goToProfile()">View Profile</button>
+  </div>
+</div>
