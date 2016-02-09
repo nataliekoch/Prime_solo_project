@@ -82,11 +82,9 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
     }
   );
 
-  $scope.goToProfile = function(){
-    var animalID = document.getElementById($scope.animal.animalID);
-    console.log(animalID);
-    // $location.path('/profile');
-    // $location.search('animalId', animalID);
+  $scope.goToProfile = function(animalID){
+    $location.path('/profile');
+    $location.search('animalId', animalID);
   }
 
   $scope.getPets = function(){
@@ -105,11 +103,23 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   }
 }]);
 
-app.controller('ProfileController', ['$scope', '$http', '$location', 'apiService', function($scope, $http, $location, apiService){
+app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', function($scope, $http, $location, ProfileCall){
+  var animalId = $location.search().animalId;
+
+  var apiUrl = ProfileCall(animalId);
+
+  $http({
+    method: 'JSONP',
+    url: apiUrl
+  })
+  .then(
+    function(response) {
+      $scope.searchResults = response.data;
+      console.log(response);
+    }
+  );
 
 }]);
-
-
 
 app.factory('apiService', ['$http', function($http){
 
@@ -173,6 +183,40 @@ app.factory('apiService', ['$http', function($http){
   };
 
 }]);
+
+app.factory('ProfileCall', ['$http', function($http){
+  var urlConstructor = function(animalId) {
+    var filter = {
+      "apikey":"vngSNgO9",
+      "objectType":"animals",
+      "objectAction":"publicView",
+      "values":
+        [
+          {
+            "animalID": animalId
+          }
+        ],
+        "fields":
+        [
+          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
+        ]
+    }
+
+    var encoded = angular.toJson(filter);
+
+    var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+    url += encoded;
+
+    return url;
+  }
+
+  return function(animalId) {
+    var url = urlConstructor(animalId);
+    return url;
+  };
+
+}]);
+
 
 app.controller('SuccessController', ['$scope', '$http', function($scope, $http){
 

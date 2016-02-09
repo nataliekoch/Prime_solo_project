@@ -1,0 +1,51 @@
+// app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', function($scope, $http, $location, ProfileCall){
+//   var animalId = $location.search().animalId;
+//
+//   var apiUrl = ProfileCall(animalId);
+//
+//   $http({
+//     method: 'JSONP',
+//     url: apiUrl
+//   })
+//   .then(
+//     function(response) {
+//       $scope.searchResults = response.data;
+//       console.log(response);
+//     }
+//   );
+//
+// }]);
+
+app.factory('ProfileCall', ['$http', function($http){
+//   var urlConstructor = function(animalId) {
+//     var filter = {
+//       "apikey":"vngSNgO9",
+//       "objectType":"animals",
+//       "objectAction":"publicView",
+//       "values":
+//         [
+//           {
+//             "animalID": animalId
+//           }
+//         ],
+//         "fields":
+//         [
+//           "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
+//         ]
+//       }
+//     }
+//
+//     var encoded = angular.toJson(filter);
+//
+//     var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+//     url += encoded;
+//
+//     return url;
+//   };
+//
+//   return function(animalId) {
+//     var url = urlConstructor(animalId);
+//     return url;
+//   };
+//
+// }]);

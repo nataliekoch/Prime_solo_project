@@ -143,3 +143,19 @@ body {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 }
+
+.username-container{
+  padding: 40px 0 0;
+}
+
+.password-container{
+  padding: 20px;
+}
+
+.newUserBtn{
+  border: 0;
+  width: 300px;
+  height: 80px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
