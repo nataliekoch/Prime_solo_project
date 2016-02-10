@@ -82,9 +82,10 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
     }
   );
 
-  $scope.goToProfile = function(animalID){
+  $scope.goToProfile = function(animalID, animalOrgId){
     $location.path('/profile');
     $location.search('animalId', animalID);
+    $location.search('animalOrgId', animalOrgId);
   }
 
   $scope.getPets = function(){
@@ -105,8 +106,10 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
 
 app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', 'OrgCall', function($scope, $http, $location, ProfileCall, OrgCall){
   var animalId = $location.search().animalId;
+  var animalOrgId = $location.search().animalOrgId;
 
   var apiUrl = ProfileCall(animalId);
+  var apiUrlOrg = OrgCall(animalOrgId);
 
   $http({
     method: 'JSONP',
@@ -119,19 +122,16 @@ app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCal
     }
   );
 
-  $scope.testbtn = function(){
-    var apiUrl = OrgCall();
-
-    $http({
-      method: 'JSONP',
-      url: apiUrl
-    })
-    .then(
-      function(response) {
-        console.log(response);
-      }
-    );
-  }
+  $http({
+    method: 'JSONP',
+    url: apiUrlOrg
+  })
+  .then(
+    function(response) {
+      $scope.orgResults = response.data;
+      console.log(response);
+    }
+  );
 
 }]);
 
@@ -178,7 +178,7 @@ app.factory('apiService', ['$http', function($http){
         ],
         "fields":
         [
-          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
+          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex", "animalOrgID"
         ]
       }
     }
@@ -240,7 +240,7 @@ app.factory('OrgCall', ['$http', function($http){
       "values":
       [
           {
-              "orgID":orgID
+              "orgID": orgID
           }
       ],
       "fields":["orgName","orgAddress","orgCity","orgState","orgPostalcode","orgPhone","orgEmail","orgWebsiteUrl","orgType"]
@@ -254,8 +254,8 @@ app.factory('OrgCall', ['$http', function($http){
     return url;
   }
 
-  return function(animalId) {
-    var url = urlConstructor(animalId);
+  return function(orgID) {
+    var url = urlConstructor(orgID);
     return url;
   };
 }]);

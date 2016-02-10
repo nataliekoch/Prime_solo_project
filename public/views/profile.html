@@ -15,4 +15,17 @@
       <p>Special Needs: {{info.animalSpecialneeds}}</p>
     </div>
   </div>
+  <div class="profile-org-container" ng-repeat="info in orgResults.data track by $index | json">
+    <div class="profile-org-info">
+      <p>{{info.orgName}}</p>
+      <p>{{info.orgType}}</p>
+      <p>{{info.orgCity}}</p>
+      <p>{{info.orgState}}</p>
+      <p>{{info.orgAddress}}</p>
+      <p>{{info.orgPostalcode}}</p>
+      <p>{{info.orgPhone}}</p>
+      <p>{{info.orgEmail}}</p>
+      <p>{{info.orgWebsiteUrl}}</p>
+    </div>
+  </div>
 </div>
