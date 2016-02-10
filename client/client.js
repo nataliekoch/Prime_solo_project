@@ -103,7 +103,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   }
 }]);
 
-app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', function($scope, $http, $location, ProfileCall){
+app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', 'OrgCall', function($scope, $http, $location, ProfileCall, OrgCall){
   var animalId = $location.search().animalId;
 
   var apiUrl = ProfileCall(animalId);
@@ -114,10 +114,24 @@ app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCal
   })
   .then(
     function(response) {
-      $scope.searchResults = response.data;
+      $scope.profileResults = response.data;
       console.log(response);
     }
   );
+
+  $scope.testbtn = function(){
+    var apiUrl = OrgCall();
+
+    $http({
+      method: 'JSONP',
+      url: apiUrl
+    })
+    .then(
+      function(response) {
+        console.log(response);
+      }
+    );
+  }
 
 }]);
 
@@ -198,7 +212,7 @@ app.factory('ProfileCall', ['$http', function($http){
         ],
         "fields":
         [
-          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex"
+          "animalPictures","animalBreed","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex","animalOrgID","locationName","locationUrl","locationAddress","animalDescription","animalDescriptionPlain","animalGeneralAge","animalSpecialneeds","animalCoatLength"
         ]
     }
 
@@ -215,6 +229,35 @@ app.factory('ProfileCall', ['$http', function($http){
     return url;
   };
 
+}]);
+
+app.factory('OrgCall', ['$http', function($http){
+  var urlConstructor = function(orgID) {
+    var filter = {
+      "apikey": "vngSNgO9",
+      "objectType":"orgs",
+      "objectAction":"publicView",
+      "values":
+      [
+          {
+              "orgID":orgID
+          }
+      ],
+      "fields":["orgName","orgAddress","orgCity","orgState","orgPostalcode","orgPhone","orgEmail","orgWebsiteUrl","orgType"]
+    }
+
+    var encoded = angular.toJson(filter);
+
+    var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+    url += encoded;
+
+    return url;
+  }
+
+  return function(animalId) {
+    var url = urlConstructor(animalId);
+    return url;
+  };
 }]);
 
 

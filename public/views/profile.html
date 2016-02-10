@@ -1,3 +1,18 @@
 <h1>PROFILE PAGE</h1>
-<div class="search-results">
+<div class="profile-results">
+  <div class="profile-containers" ng-repeat="info in profileResults.data track by $index | json">
+    <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize}}">
+    <div class="animal-profile-info">
+      <p>Name: {{info.animalName}}</p>
+      <p>Breed: {{info.animalBreed}}</p>
+      <p>Coat Length: {{info.animalCoatLength}}</p>
+      <p>Age: {{info.animalGeneralAge}}</p>
+      <p>Location:{{info.animalLocationCitystate}}</p>
+      <p>Okay with Cats: {{info.animalOKWithCats}}</p>
+      <p>Okay with Dogs: {{info.animalOKWithDogs}}</p>
+      <p>Okay with Kids: {{info.animalOKWithKids}}</p>
+      <p>Gender: {{info.animalSex}}</p>
+      <p>Special Needs: {{info.animalSpecialneeds}}</p>
+    </div>
+  </div>
 </div>
