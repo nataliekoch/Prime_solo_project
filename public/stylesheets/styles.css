@@ -151,6 +151,14 @@ body {
   text-align: center;
 }
 
+.search-breedAndGender{
+  font-size: 20px;
+}
+
+..search-animal-cityAndState{
+  font-size: 17px;
+}
+
 .search-animalSpecialneeds, .search-animalCompatibility{
   border: none;
   height: 70px;
@@ -167,6 +175,10 @@ body {
 
 .search-animalSpecialneeds{
   background-color: rgb(198, 179, 53);
+}
+
+.filter{
+  text-align: center;
 }
 
 /*//////////////////////////////

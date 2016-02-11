@@ -62,6 +62,7 @@ app.controller('HomeController', ['$scope', '$location', function($scope, $locat
     $location.search('species', $scope.data.species);
     $location.search('breed', $scope.data.breed);
     $location.search('zip', $scope.data.zip);
+    $location.search('locationDistance', '100');
   }
 }]);
 
@@ -69,9 +70,9 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   var animalSpecies = $location.search().species;
   var animalBreed = $location.search().breed;
   var animalZip = $location.search().zip;
-  console.log(animalSpecies, animalBreed, animalZip);
+  var animalDistance = $location.search().locationDistance;
 
-  var apiUrl = apiService(animalSpecies, animalBreed, animalZip);
+  var apiUrl = apiService(animalSpecies, animalBreed, animalZip, animalDistance);
 
   $http({
     method: 'JSONP',
@@ -79,7 +80,6 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
-      console.log(response);
       $scope.searchResults = response.data;
     }
   );
@@ -91,7 +91,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   }
 
   $scope.getPets = function(){
-    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip);
+    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip, animalDistance);
 
     $http({
       method: 'JSONP',
@@ -99,7 +99,23 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
     })
     .then(
       function(response) {
-        console.log(response);
+        $scope.searchResults = response.data;
+        $location.search('species', $scope.data.species);
+        $location.search('breed', $scope.data.breed);
+        $location.search('zip', $scope.data.zip);
+        $location.search('locationDistance', animalDistance);
+      }
+    );
+  }
+
+  $scope.updateDistance = function(){
+    var apiUrl = apiService(animalSpecies, animalBreed, animalZip, $scope.data.distance);
+    $http({
+      method: 'JSONP',
+      url: apiUrl
+    })
+    .then(
+      function(response) {
         $scope.searchResults = response.data;
       }
     );
@@ -139,7 +155,7 @@ app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCal
 
 app.factory('apiService', ['$http', function($http){
 
-  var urlConstructor = function(species, breed, zip) {
+  var urlConstructor = function(species, breed, zip, distance) {
     var filter = {
       "apikey":"vngSNgO9",
       "objectType":"animals",
@@ -155,7 +171,7 @@ app.factory('apiService', ['$http', function($http){
           {
             "fieldName": "animalLocationDistance",
             "operation": "lessthan",
-            "criteria": "100"
+            "criteria": distance
           },
           {
             "fieldName": "animalLocation",
@@ -188,8 +204,8 @@ app.factory('apiService', ['$http', function($http){
     return url;
   };
 
-  return function(species, breed, zip) {
-    var url = urlConstructor(species, breed, zip)
+  return function(species, breed, zip, distance) {
+    var url = urlConstructor(species, breed, zip, distance)
     return url;
   };
 

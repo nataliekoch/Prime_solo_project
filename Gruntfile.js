@@ -27,6 +27,8 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: "node_modules/",
 				src: [
+					"jquery/dist/jquery.min.js",
+					"jquery-lazyload/jquery.lazyload.js",
 					"angular/angular.min.js",
 					"angular-route/angular-route.min.js"
 				],

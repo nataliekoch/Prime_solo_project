@@ -23,6 +23,18 @@
         </form>
     </div>
 </div>
+<div class="filter">
+  <h2 class="filter-h2">FILTER</h2>
+  <div>
+    <label class="filter-distance">Distance</label>
+    <select  ng-change="updateDistance()" name="distance" ng-model="data.distance">
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="250">250</option>
+      <option value="500">500</option>
+    </select>
+  </div>
+</div>
 <div class="search-results">
   <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
     <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
