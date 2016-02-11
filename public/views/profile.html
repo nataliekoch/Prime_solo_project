@@ -3,16 +3,16 @@
   <div class="profile-containers" ng-repeat="info in profileResults.data track by $index | json">
     <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize}}">
     <div class="animal-profile-info">
-      <p>Name: {{info.animalName}}</p>
-      <p>Breed: {{info.animalBreed}}</p>
-      <p>Coat Length: {{info.animalCoatLength}}</p>
-      <p>Age: {{info.animalGeneralAge}}</p>
-      <p>Location:{{info.animalLocationCitystate}}</p>
-      <p>Okay with Cats: {{info.animalOKWithCats}}</p>
-      <p>Okay with Dogs: {{info.animalOKWithDogs}}</p>
-      <p>Okay with Kids: {{info.animalOKWithKids}}</p>
-      <p>Gender: {{info.animalSex}}</p>
-      <p>Special Needs: {{info.animalSpecialneeds}}</p>
+      <p ng-if="info.animalName">Name: {{info.animalName}}</p>
+      <p ng-if="info.animalBreed">Breed: {{info.animalBreed}}</p>
+      <p ng-if="info.animalCoatLength">Coat Length: {{info.animalCoatLength}}</p>
+      <p ng-if="info.animalGeneralAge">Age: {{info.animalGeneralAge}}</p>
+      <p ng-if="info.animalLocationCitystate">Location:{{info.animalLocationCitystate}}</p>
+      <p ng-if="info.animalOKWithCats == 'No'">Okay with Cats: {{info.animalOKWithCats}}</p>
+      <p ng-if="info.animalOKWithDogs == 'No'">Okay with Dogs: {{info.animalOKWithDogs}}</p>
+      <p ng-if="info.animalOKWithKids == 'No'">Okay with Kids: {{info.animalOKWithKids}}</p>
+      <p ng-if="info.animalSex">Gender: {{info.animalSex}}</p>
+      <p ng-if="info.animalSpecialneeds == 'yes'">Special Needs: {{info.animalSpecialneeds}}</p>
     </div>
   </div>
   <div class="profile-org-container" ng-repeat="info in orgResults.data track by $index | json">

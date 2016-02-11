@@ -4,12 +4,17 @@ var passport = require('passport');
 var path = require('path');
 var User = require('../../models/user');
 
+// TODO: REFACTOR TO REMOVE REDUNDENCES//
 router.get('/', function(request, response){
   response.sendFile(path.join(__dirname, '../../public/views/index.html'));
 });
 
+router.get('/profile', function(request, response){
+  response.sendFile(path.join(__dirname, '../../public/views/index.html'));
+});
+
 router.get('/login',function(request, response){
-	response.sendFile(path.join(__dirname, '../../public/views/login.html'));
+	response.sendFile(path.join(__dirname, '../../public/views/index.html'));
 })
 
 router.get('/success', function(request, response){
@@ -21,11 +26,11 @@ router.get('/failure', function(request, response){
 });
 
 router.get('/signUp', function(request, response){
-	response.sendFile(path.join(__dirname, '../../public/views/signUp.html'));
+	response.sendFile(path.join(__dirname, '../../public/views/index.html'));
 });
 
 router.get('/searchPage', function(request, response){
-	response.sendFile(path.join(__dirname, '../../public/views/searchPage.html'));
+	response.sendFile(path.join(__dirname, '../../public/views/index.html'));
 });
 
 router.post('/', passport.authenticate('local', {

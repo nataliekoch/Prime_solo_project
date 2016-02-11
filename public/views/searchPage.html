@@ -25,12 +25,14 @@
 </div>
 <div class="search-results">
   <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
-    <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize}}">
+    <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize || 'http://placehold.it/300'}}" height="{{animal.animalPictures.original.resolutionY}}" width="{{animal.animalPictures.original.resolutionX}}">
     <div class="animal-searchInfo">
       <span>{{animal.animalName}}</span>
       <button class="profile-Btn" ng-click="goToProfile(animal.animalID, animal.animalOrgID)">View Profile</button><br>
-      <span>{{animal.animalBreed + ' | ' + animal.animalSex}}</span><br>
-      <span>{{animal.animalLocationCitystate}}</span>
+      <span>{{animal.animalBreed}}</span>
+      <span ng-if="animal.animalSex">|</span>
+      <span>{{animal.animalSex}}</span>
+      <p>{{animal.animalLocationCitystate}}</p>
     </div>
   </div>
 </div>

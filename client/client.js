@@ -69,6 +69,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   var animalSpecies = $location.search().species;
   var animalBreed = $location.search().breed;
   var animalZip = $location.search().zip;
+  console.log(animalSpecies, animalBreed, animalZip);
 
   var apiUrl = apiService(animalSpecies, animalBreed, animalZip);
 
@@ -78,6 +79,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
+      console.log(response);
       $scope.searchResults = response.data;
     }
   );
@@ -145,16 +147,11 @@ app.factory('apiService', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "20",
-        "resultSort": "animalID",
+        "resultLimit": "100",
+        "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
         [
-          {
-            "fieldName": "animalStatus",
-            "operation": "equals",
-            "criteria": "Available"
-          },
           {
             "fieldName": "animalLocationDistance",
             "operation": "lessthan",
