@@ -136,9 +136,15 @@ body {
   font-size: 30px;
 }
 
+.profile-Btn:hover{
+  opacity: 0.8;
+}
+
 .search-animalName{
+  border-bottom: 1px solid #ccc;
   font-size: 30px;
   margin-top: 0;
+  padding-bottom: 10px;
 }
 
 .search-animalName, .search-breedAndGender, .search-animal-cityAndState{
