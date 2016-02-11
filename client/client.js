@@ -131,6 +131,10 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
       }
     );
   }
+
+  // $scope.updateGenderMale = function(){
+  //   console.log($scope.data.genderMale);
+  // }
 }]);
 
 app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', 'OrgCall', function($scope, $http, $location, ProfileCall, OrgCall){

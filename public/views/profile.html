@@ -1,8 +1,15 @@
-<h1>PROFILE PAGE</h1>
+<h1 class="logo">PawFinder</h1>
+
+<a class="login" href="/login">Login</a>
+<a class="signup" href="/signUp">Sign Up</a>
+
 <div class="profile-results">
   <div class="profile-containers" ng-repeat="info in profileResults.data track by $index | json">
-    <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize}}">
+    <div class="animal-profilePic-container">
+      <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
+    </div>
     <div class="animal-profile-info">
+      <p>Info</p>
       <p ng-if="info.animalName">Name: {{info.animalName}}</p>
       <p ng-if="info.animalBreed">Breed: {{info.animalBreed}}</p>
       <p ng-if="info.animalCoatLength">Coat Length: {{info.animalCoatLength}}</p>
@@ -14,18 +21,18 @@
       <p ng-if="info.animalSex">Gender: {{info.animalSex}}</p>
       <p ng-if="info.animalSpecialneeds == 'yes'">Special Needs: {{info.animalSpecialneeds}}</p>
     </div>
-  </div>
-  <div class="profile-org-container" ng-repeat="info in orgResults.data track by $index | json">
-    <div class="profile-org-info">
-      <p>{{info.orgName}}</p>
-      <p>{{info.orgType}}</p>
-      <p>{{info.orgCity}}</p>
-      <p>{{info.orgState}}</p>
-      <p>{{info.orgAddress}}</p>
-      <p>{{info.orgPostalcode}}</p>
-      <p>{{info.orgPhone}}</p>
-      <p>{{info.orgEmail}}</p>
-      <p>{{info.orgWebsiteUrl}}</p>
+    <div class="profile-org-container" ng-repeat="info in orgResults.data track by $index | json">
+      <div class="profile-org-info">
+        <p>{{info.orgName}}</p>
+        <p>{{info.orgType}}</p>
+        <p>{{info.orgCity}}</p>
+        <p>{{info.orgState}}</p>
+        <p>{{info.orgAddress}}</p>
+        <p>{{info.orgPostalcode}}</p>
+        <p>{{info.orgPhone}}</p>
+        <p>{{info.orgEmail}}</p>
+        <p>{{info.orgWebsiteUrl}}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -3,6 +3,10 @@
   src: url('fonts/charter/webfonts/charter_regular-webfont.woff') format('woff');
 }
 
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+
 body {
   font-family: "Charter", Georgia, Serif;
   margin: 0;
@@ -180,6 +184,29 @@ body {
 .filter{
   text-align: center;
 }
+/*//////////////////////////////
+////////////Profile/////////////
+//////////////////////////////*/
+
+.profile-animal-image{
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.animal-profilePic-container, .profile-containers, .animal-profile-info, .profile-org-container{
+  display: inline-block;
+}
+
+.animal-profile-info, .profile-org-container{
+  border: gray 1px solid;
+}
+
+p{
+
+}
+
 
 /*//////////////////////////////
 ////////////Login/////////////

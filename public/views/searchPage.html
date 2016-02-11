@@ -26,13 +26,27 @@
 <div class="filter">
   <h2 class="filter-h2">FILTER</h2>
   <div>
-    <label class="filter-distance">Distance</label>
-    <select  ng-change="updateDistance()" name="distance" ng-model="data.distance">
-      <option value="50">50</option>
-      <option value="100">100</option>
-      <option value="250">250</option>
-      <option value="500">500</option>
-    </select>
+    <form>
+      <label class="filter-distance">Distance</label>
+        <select ng-change="updateDistance()" name="distance" ng-model="data.distance">
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="250">250</option>
+          <option value="500">500</option>
+        </select>
+    </form>
+
+    <!-- <form>
+      <label class="filter-gender">Gender</label><br/>
+      <label>Male:
+        <input type="checkbox" ng-model="data.genderMale" ng-checked="updateGenderMale()">
+      </label><br/>
+      <label>Female:
+        <input type="checkbox" ng-model="data.genderFemale" ng-checked="updateGenderFemale()">
+      </label>
+    </form> -->
+
+
   </div>
 </div>
 <div class="search-results">
