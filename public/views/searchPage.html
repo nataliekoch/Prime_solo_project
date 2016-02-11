@@ -25,14 +25,20 @@
 </div>
 <div class="search-results">
   <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
-    <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize || 'http://placehold.it/300'}}" height="{{animal.animalPictures.original.resolutionY}}" width="{{animal.animalPictures.original.resolutionX}}">
+    <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
     <div class="animal-searchInfo">
-      <span>{{animal.animalName}}</span>
-      <button class="profile-Btn" ng-click="goToProfile(animal.animalID, animal.animalOrgID)">View Profile</button><br>
-      <span>{{animal.animalBreed}}</span>
-      <span ng-if="animal.animalSex">|</span>
-      <span>{{animal.animalSex}}</span>
-      <p>{{animal.animalLocationCitystate}}</p>
+      <p class="search-animalName">{{animal.animalName}}</p>
+      <div class="search-breedAndGender">
+        <span>{{animal.animalBreed}}</span>
+        <span ng-if="animal.animalSex">|</span>
+        <span>{{animal.animalSex}}</span>
+      </div>
+      <p class="search-animal-cityAndState">{{animal.animalLocationCitystate}}</p>
     </div>
+    <button class="profile-Btn" ng-click="goToProfile(animal.animalID, animal.animalOrgID)">Profile</button>
+    <div class="search-animalCompatibility" ng-if="animal.animalOKWithCats == 'No'">Animal not good with Cats</div>
+    <div class="search-animalCompatibility" ng-if="animal.animalOKWithDogs == 'No'">Animal not good with Dogs</div>
+    <div class="search-animalCompatibility" ng-if="animal.animalOKWithKids == 'No'">Animal not good with Kids</div>
+    <div class="search-animalSpecialneeds" ng-if="animal.animalSpecialneeds == 'Yes'">Animal has special needs</div>
   </div>
 </div>

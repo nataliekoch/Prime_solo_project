@@ -147,7 +147,7 @@ app.factory('apiService', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "100",
+        "resultLimit": "20",
         "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
@@ -175,7 +175,7 @@ app.factory('apiService', ['$http', function($http){
         ],
         "fields":
         [
-          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex", "animalOrgID"
+          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSpecialneeds","animalSex", "animalOrgID"
         ]
       }
     }

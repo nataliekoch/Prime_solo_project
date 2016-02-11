@@ -113,9 +113,6 @@ body {
 	padding: 15px;
 	padding-bottom: 10px;
 	transition: opacity .4s ease-in-out;
-  /*column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-	-webkit-column-break-inside: avoid;*/
 	display: inline-block;
 }
 
@@ -131,8 +128,39 @@ body {
   display: inline;
 }
 
-.profileBtn:hover figure:not(:hover) {
+.profile-Btn {
   opacity: 0.4;
+  border: none;
+  height: 70px;
+  width: 300px;
+  font-size: 30px;
+}
+
+.search-animalName{
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.search-animalName, .search-breedAndGender, .search-animal-cityAndState{
+  text-align: center;
+}
+
+.search-animalSpecialneeds, .search-animalCompatibility{
+  border: none;
+  height: 70px;
+  width: 300px;
+  line-height: 70px;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+
+.search-animalCompatibility{
+  background-color: rgb(154, 26, 26);
+}
+
+.search-animalSpecialneeds{
+  background-color: rgb(198, 179, 53);
 }
 
 /*//////////////////////////////
