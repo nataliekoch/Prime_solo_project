@@ -240,7 +240,7 @@ app.factory('ProfileCall', ['$http', function($http){
         ],
         "fields":
         [
-          "animalPictures","animalBreed","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex","animalOrgID","locationName","locationUrl","locationAddress","animalDescription","animalDescriptionPlain","animalGeneralAge","animalSpecialneeds","animalCoatLength"
+          "animalSizeCurrent","animalSpecies","animalPictures","animalBreed","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex","animalOrgID","locationName","locationUrl","locationAddress","animalDescriptionPlain","animalGeneralAge","animalSpecialneeds","animalCoatLength","animalColor"
         ]
     }
 
