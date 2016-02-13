@@ -31,7 +31,11 @@ html {
   font-size: 20px;
   letter-spacing: .5px;
   float: right;
-  margin: 10px;
+  margin: 10px 5px 10px 0;
+}
+
+.signup{
+  margin: 10px 10px 10px 5px;
 }
 
 .login:active, .signup:active {
@@ -100,7 +104,11 @@ html {
 
 .background-image {
   height: 100vh;
-  background-image: url("images/doginwheatfield-EDIT.jpg");
+  /*background-image: url("images/cat_laying.jpg");*/
+  /*background-image: url("images/GermanSheperd.jpg");*/
+  /*background-image: url("images/Black-Cat.jpg");*/
+  background-image: url("images/catinsnow.jpg");
+  /*background-image: url("images/doginwheatfield-EDIT.jpg");*/
   background-position: center;
   background-size: cover;
 }
@@ -245,10 +253,13 @@ html {
   max-height: 700px;
   display: inline-block;
   vertical-align: top;
-  margin: 0 6%;
+  margin-left: 4%;
+  margin-top: 4.7%;
 }
 
 .content-container{
+  margin-left: 5%;
+  margin-top: 4%;
   vertical-align: top;
   position: relative;
   min-height: 1px;
@@ -328,7 +339,6 @@ html {
 }
 
 .block-holder{
-  overflow: hidden;
   height: 400px;
 }
 
@@ -363,11 +373,14 @@ html {
   line-height: 17px;
   border: 1px solid #eaeaea;
   word-break: break-word;
+  width: 240px;
+  float: right;
 }
 
 .td-animalBreed{
   padding: 10px;
   text-align: center;
+  font-size: 18px;
 }
 
 .th-breed{
@@ -390,7 +403,7 @@ html {
 }
 
 .field{
-  font-weight: 500;
+  color: rgb(140, 140, 140);
   padding: 6px 2px 8px 11px;
   width: 50%;
   border-bottom: solid 1px #ddd;
@@ -399,11 +412,24 @@ html {
 
 .value{
   color: black;
-  font-weight: 600;
-  width: 60%;
+  width: 50%;
   padding: 10px 10px 8px 11px;
   line-height: 1.42857143;
   border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+#profileCompatibility{
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px 5px 10px;
+  background-color: #fdfdfd;
+}
+
+tr:last-child td{
+  border-bottom: none;
 }
 /*//////////////////////////////
 ////////////Login/////////////

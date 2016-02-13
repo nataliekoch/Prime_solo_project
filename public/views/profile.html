@@ -1,8 +1,7 @@
 <h1 class="logo">PawFinder</h1>
 
-<a class="login" href="/login">Login</a>
 <a class="signup" href="/signUp">Sign Up</a>
-
+<a class="login" href="/login">Login</a>
 
 <div class="profile-container" ng-repeat="info in profileResults.data track by $index | json">
   <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
@@ -70,12 +69,6 @@
             <td class="field">Size:</td>
             <td class="value">{{info.animalSizeCurrent}}</td>
           </tr>
-          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
-            <td class="field">Compatibility:</td>
-            <td class="value" ng-if="info.animalOKWithCats == 'Yes'">Ok with Cats</td>
-            <td class="value" ng-if="info.animalOKWithDogs == 'Yes'">Ok with Dogs</td>
-            <td class="value" ng-if="info.animalOKWithKids == 'Yes'">Ok with Kids</td>
-            <td class="value" ng-if="info.animalOKWithKids == 'No' && info.animalOKWithDogs == 'No' && info.animalOKWithCats == 'No'">Not Ok with Cats, Dogs, or Kids</td>
           </tr>
           <tr ng-if="info.animalCoatLength">
             <td class="field">Coat Length:</td>
@@ -86,7 +79,24 @@
             <td class="value" ng-if="info.animalSpecialneeds == 'Yes'">Yes</td>
             <td class="value" ng-if="info.animalSpecialneeds == 'No'">No</td>
           </tr>
-
+          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
+            <td id="profileCompatibility" colspan="2">Compatibility:</td>
+          </tr>
+          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
+            <td class="field" ng-if="info.animalOKWithCats == 'Yes'">Ok with Cats?</td>
+            <td class="value" ng-if="info.animalOKWithCats == 'Yes'">Yes</td>
+          </tr>
+          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
+            <td class="field" ng-if="info.animalOKWithDogs == 'Yes'">Ok with Dogs?</td>
+            <td class="value" ng-if="info.animalOKWithDogs == 'Yes'">Yes</td>
+          </tr>
+          <tr>
+            <td class="field" ng-if="info.animalOKWithKids == 'Yes'">Ok with Kids?</td>
+            <td class="value" ng-if="info.animalOKWithKids == 'Yes'">Yes</td>
+          </tr>
+          <tr>
+            <td class="value" ng-if="info.animalOKWithKids == 'No' && info.animalOKWithDogs == 'No' && info.animalOKWithCats == 'No'">No Cats,<br> Dogs, or Kids</td>
+          </tr>
         </tbody>
       </table>
     </div>

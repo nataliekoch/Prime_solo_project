@@ -58,7 +58,6 @@ app.controller('SignUpController', ['$scope', '$http', '$location', function($sc
 
 app.controller('HomeController', ['$scope', '$location', 'BreedCall', '$http', function($scope, $location, BreedCall, $http){
 
-
   $scope.getPets = function(){
     $location.path('searchPage');
     $location.search('species', $scope.data.species);
@@ -96,9 +95,27 @@ app.controller('HomeController', ['$scope', '$location', 'BreedCall', '$http', f
       );
     }
   }
+
+  $scope.randomPic = function(){
+    var picture = ['stylesheets/images/catinsnow.jpg', 'stylesheets/images/doginwheatfield-EDIT.jpg', 'stylesheets/images/cat_laying.jpg']
+
+    function randomNumber(min, max) {
+       return Math.floor(Math.random() * (1 + max - min) + min);
+    }
+
+    var number = randomNumber(0, 4);
+
+    var styles = {
+      'background-image': picture[number]
+    }
+    console.log(styles);
+    return styles;
+  }
+
+
 }]);
 
-app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', function($scope, $http, $location, apiService){
+app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', 'BreedCall', function($scope, $http, $location, apiService, BreedCall){
   var animalSpecies = $location.search().species;
   var animalBreed = $location.search().breed;
   var animalZip = $location.search().zip;
@@ -165,9 +182,35 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
     );
   }
 
-  // $scope.updateGenderMale = function(){
-  //   console.log($scope.data.genderMale);
-  // }
+  $scope.pickBreed = function(species){
+    if(species == "Dog"){
+      var apiUrl = BreedCall(species);
+
+      $http({
+        method: 'JSONP',
+        url: apiUrl
+      })
+      .then(
+        function(response) {
+          $scope.breeds = response.data.data;
+          console.log();
+
+        }
+      );
+    }else{
+      var apiUrl = BreedCall(species);
+
+      $http({
+        method: 'JSONP',
+        url: apiUrl
+      })
+      .then(
+        function(response) {
+          $scope.breeds = response.data.data;
+        }
+      );
+    }
+  }
 }]);
 
 app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCall', 'OrgCall', function($scope, $http, $location, ProfileCall, OrgCall){
@@ -211,7 +254,7 @@ app.factory('apiService', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "20",
+        "resultLimit": "100",
         "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
@@ -273,7 +316,7 @@ app.factory('ProfileCall', ['$http', function($http){
         ],
         "fields":
         [
-          "animalSizeCurrent","animalSpecies","animalPictures","animalBreed","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex","animalOrgID","locationName","locationUrl","locationAddress","animalDescriptionPlain","animalGeneralAge","animalSpecialneeds","animalCoatLength","animalColor"
+          "animalSizeCurrent","animalSpecies","animalPictures","animalBreed","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSex","animalOrgID","locationName","locationUrl","locationAddress","animalDescription","animalDescriptionPlain","animalGeneralAge","animalSpecialneeds","animalCoatLength","animalColor"
         ]
     }
 
