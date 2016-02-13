@@ -56,13 +56,45 @@ app.controller('SignUpController', ['$scope', '$http', '$location', function($sc
   }
 }]);
 
-app.controller('HomeController', ['$scope', '$location', function($scope, $location){
+app.controller('HomeController', ['$scope', '$location', 'BreedCall', '$http', function($scope, $location, BreedCall, $http){
+
+
   $scope.getPets = function(){
     $location.path('searchPage');
     $location.search('species', $scope.data.species);
-    $location.search('breed', $scope.data.breed);
+    $location.search('breed', $scope.data.breed.breedName);
     $location.search('zip', $scope.data.zip);
     $location.search('locationDistance', '100');
+  }
+
+  $scope.pickBreed = function(species){
+    if(species == "Dog"){
+      var apiUrl = BreedCall(species);
+
+      $http({
+        method: 'JSONP',
+        url: apiUrl
+      })
+      .then(
+        function(response) {
+          $scope.breeds = response.data.data;
+          console.log();
+
+        }
+      );
+    }else{
+      var apiUrl = BreedCall(species);
+
+      $http({
+        method: 'JSONP',
+        url: apiUrl
+      })
+      .then(
+        function(response) {
+          $scope.breeds = response.data.data;
+        }
+      );
+    }
   }
 }]);
 
@@ -80,6 +112,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
+      console.log(response);
       $scope.searchResults = response.data;
     }
   );
@@ -91,7 +124,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   }
 
   $scope.getPets = function(){
-    var apiUrl = apiService($scope.data.species, $scope.data.breed, $scope.data.zip, animalDistance);
+    var apiUrl = apiService($scope.data.species, $scope.data.breed.breedName, $scope.data.zip, animalDistance);
 
     $http({
       method: 'JSONP',
@@ -100,7 +133,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
     .then(
       function(response) {
         $location.search('species', $scope.data.species);
-        $location.search('breed', $scope.data.breed);
+        $location.search('breed', $scope.data.breed.breedName);
         $location.search('zip', $scope.data.zip);
         $location.search('locationDistance', animalDistance);
         $scope.searchResults = response.data;
@@ -284,6 +317,44 @@ app.factory('OrgCall', ['$http', function($http){
 
   return function(orgID) {
     var url = urlConstructor(orgID);
+    return url;
+  };
+}]);
+
+app.factory('BreedCall', ['$http', function($http){
+  var urlConstructor = function(species) {
+    var filter = {
+      "apikey": "vngSNgO9",
+      "objectType":"animalBreeds",
+      "objectAction":"publicSearch",
+      "search":
+      {
+        "resultStart": "0",
+        "resultLimit": "900",
+        "resultSort": "breedName",
+        "resultOrder": "asc",
+        "filters":
+        [
+          {
+            "fieldName": "breedSpecies",
+            "operation": "equals",
+            "criteria": species
+          },
+        ],
+        "fields": ["breedName"]
+      }
+    }
+
+    var encoded = angular.toJson(filter);
+
+    var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+    url += encoded;
+
+    return url;
+  }
+
+  return function(species) {
+    var url = urlConstructor(species);
     return url;
   };
 }]);

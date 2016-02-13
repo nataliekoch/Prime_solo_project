@@ -1,34 +1,37 @@
 <h1 class="logo">PawFinder</h1>
 
-<a class="login" href="/login">Login</a>
 <a class="signup" href="/signUp">Sign Up</a>
+<a class="login" href="/login">Login</a>
 
-<div class="searchbar">
-    <h2 class="search-h2">Find a pet!</h2>
-    <div class="search-form">
-        <form class="search-form">
-            <label class="search-animaltype">Animal Type</label>
-            <select name="speciesSelect" ng-model="data.species">
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-            </select>
+<div class="search-searchbar">
+  <h2 class="h2">Find Your New Best Friend</h2>
+  <div class="form">
+    <form class="form">
+      <label class="label">Animal Type</label>
+      <select class="select-species" name="speciesSelect" ng-change="pickBreed(data.species)" ng-model="data.species">
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+      </select>
 
-            <label class="search-animalbreed">Animal Breed</label>
-            <input type="text" ng-model="data.breed"/>
+      <label class="label">Animal Breed</label>
+      <select class="select-breed" ng-model="data.breed" ng-options="breed.breedName for breed in breeds">
+        <option value=""></option>
+      </option>
+    </select>
 
-            <label class="search-zipcode">Zip Code</label>
-            <input type="text" ng-model="data.zip"/>
+    <label class="label">Zip Code</label>
+    <input class="zip-input"type="text" ng-model="data.zip"/>
 
-            <button class=search-submitbtn ng-click="getPets()">Submit</button>
-        </form>
-    </div>
+    <button class="submitbtn" ng-click="getPets()">Submit</button>
+  </form>
+</div>
 </div>
 <div class="filter">
-  <h2 class="filter-h2">FILTER</h2>
+  <h2 class="filter-h2">Filter</h2>
   <div>
     <form>
       <label class="filter-distance">Distance</label>
-        <select ng-change="updateDistance()" name="distance" ng-model="data.distance">
+        <select class="filter-select" ng-change="updateDistance()" name="distance" ng-model="data.distance">
           <option value="50">50</option>
           <option value="100">100</option>
           <option value="250">250</option>
