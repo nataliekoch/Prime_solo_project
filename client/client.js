@@ -226,8 +226,10 @@ app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCal
   })
   .then(
     function(response) {
+      var description = response.data.data[0].animalDescriptionPlain;
+      console.log(description);
+      response.data.data.animalDescriptionPlain = description.replace("&nbsp;", " ");
       $scope.profileResults = response.data;
-      console.log(response);
     }
   );
 
@@ -238,7 +240,6 @@ app.controller('ProfileController', ['$scope', '$http', '$location', 'ProfileCal
   .then(
     function(response) {
       $scope.orgResults = response.data;
-      console.log(response);
     }
   );
 
@@ -261,7 +262,7 @@ app.factory('apiService', ['$http', function($http){
         [
           {
             "fieldName": "animalLocationDistance",
-            "operation": "lessthan",
+            "operation": "lessthanorequal",
             "criteria": distance
           },
           {
@@ -278,11 +279,17 @@ app.factory('apiService', ['$http', function($http){
             "fieldName": "animalBreed",
             "operation": "equals",
             "criteria": breed
-          }
+          },
+          {
+            "fieldName": "animalSecondaryBreed",
+            "operation": "equals",
+            "criteria": breed
+          },
         ],
+        "filterProcessing": "(1 and 2 and 3 and 4 and 5) or (1 and 2 and 3 and 4 and 6)"
         "fields":
         [
-          "animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSpecialneeds","animalSex", "animalOrgID"
+          "animalSecondaryBreed","animalStatus","animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSpecialneeds","animalSex", "animalOrgID"
         ]
       }
     }
@@ -410,3 +417,13 @@ app.controller('SuccessController', ['$scope', '$http', function($scope, $http){
 app.controller('FailureController', ['$scope', '$http', function($scope, $http){
 
 }]);
+
+app.filter('trust', [
+  '$sce',
+  function($sce) {
+    return function(value, type) {
+      // Defaults to treating trusted text as `html`
+      return $sce.trustAs(type || 'html', value);
+    }
+  }
+])

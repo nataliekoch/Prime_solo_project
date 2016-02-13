@@ -246,15 +246,21 @@ html {
 ////////////Profile/////////////
 //////////////////////////////*/
 
-.profile-animal-image{
-  width: auto;
-  height: auto;
-  max-width: 400px;
-  max-height: 700px;
+.profile-image-container{
+  width: 400px;
+  height: 700px;
   display: inline-block;
   vertical-align: top;
   margin-left: 4%;
   margin-top: 4.7%;
+}
+
+.profile-animal-image{
+  width: 400px;
+  height: auto;
+  min-height: 200px;
+  max-height: 700px;
+  margin: auto;
 }
 
 .content-container{
@@ -432,31 +438,44 @@ tr:last-child td{
   border-bottom: none;
 }
 /*//////////////////////////////
-////////////Login/////////////
+////////Login & SignUp//////////
 //////////////////////////////*/
 .form-container{
   text-align: center;
-  margin: 200px auto;
+  margin: 100px auto 0 auto;
 }
 
-.signUp-p{
-  width: 300px;
+.signUp-p, .login-p{
+  width: 400px;
   margin: auto;
-  height: 50px;
+  height: 70px;
   border: 1px solid darkgray;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  line-height: 50px;
-  font-size: 20px;
+  line-height: 60px;
+  font-size: 40px;
 }
 
 .form-elements{
-  width: 300px;
+  width: 400px;
   margin: auto;
   border: 1px solid darkgray;
-  height: 200px;
+  height: 300px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+}
+
+.label-username, .label-password{
+  font-size: 25px;
+}
+
+.signup-textfield, .login-textfield{
+  text-decoration: none;
+  border-radius: 10px;
+  height: 25px;
+  border: 1px solid gray;
+  margin-left: 10px;
+  width: 200px;
 }
 
 .username-container{
@@ -464,13 +483,19 @@ tr:last-child td{
 }
 
 .password-container{
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-.newUserBtn{
+.newUserBtn, .loginUserBtn{
+  font-size: 30px;
+  margin-top: 30px;
   border: 0;
-  width: 300px;
-  height: 80px;
+  width: 400px;
+  height: 84px;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
+}
+
+.newUserBtn:active{
+  background-color: darkgray;
 }

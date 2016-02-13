@@ -1,15 +1,15 @@
 <div class="form-container">
     <form>
-        <p class="signUp-p">Sign Up!</p>
+        <p class="signUp-p">Sign Up</p>
         <div class="form-elements">
             <div class="username-container">
-                <label>Username:</label>
-                <input type="text" ng-model="data.username"/>
+                <label class="label-username">Username:</label>
+                <input class="signup-textfield" type="text" ng-model="data.username"/>
             </div>
 
             <div class="password-container">
-                <label>Password:</label>
-                <input type="password" ng-model="data.password"/>
+                <label class="label-password">Password:</label>
+                <input class="signup-textfield" type="password" ng-model="data.password"/>
             </div>
                 <button class="newUserBtn" ng-click="newUser()">Submit</button>
         </div>

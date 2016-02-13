@@ -4,7 +4,9 @@
 <a class="login" href="/login">Login</a>
 
 <div class="profile-container" ng-repeat="info in profileResults.data track by $index | json">
-  <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
+  <div class="profile-image-container">
+    <img class="profile-animal-image" src="{{info.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
+  </div>
   <div class="content-container">
     <div class="profile-header">
       <h1 class="profile-h1">Adopt {{info.animalName}} the {{info.animalSpecies}}!</h1>
@@ -35,7 +37,7 @@
           <h2 class="clearfix">
             <span class="description-header">Meet {{info.animalName}}!</span>
           </h2>
-          <p class="description-text">{{info.animalDescriptionPlain}}</p>
+          <p class="description-text" ng-bind-html="info.animalDescriptionPlain | trust"></p>
         </div>
       </div>
     </div>
@@ -82,20 +84,23 @@
           <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
             <td id="profileCompatibility" colspan="2">Compatibility:</td>
           </tr>
-          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
-            <td class="field" ng-if="info.animalOKWithCats == 'Yes'">Ok with Cats?</td>
+          <tr ng-if="info.animalOKWithCats">
+            <td class="field" ng-if="info.animalOKWithCats">Ok with Cats?</td>
             <td class="value" ng-if="info.animalOKWithCats == 'Yes'">Yes</td>
+            <td class="value" ng-if="info.animalOKWithCats == 'No'">No</td>
           </tr>
-          <tr ng-if="info.animalOKWithCats || info.animalOKWithDogs || info.animalOKWithKids">
-            <td class="field" ng-if="info.animalOKWithDogs == 'Yes'">Ok with Dogs?</td>
+          <tr ng-if="info.animalOKWithDogs">
+            <td class="field" ng-if="info.animalOKWithDogs">Ok with Dogs?</td>
             <td class="value" ng-if="info.animalOKWithDogs == 'Yes'">Yes</td>
+            <td class="value" ng-if="info.animalOKWithDogs == 'No'">No</td>
           </tr>
-          <tr>
-            <td class="field" ng-if="info.animalOKWithKids == 'Yes'">Ok with Kids?</td>
+          <tr ng-if="info.animalOKWithKids">
+            <td class="field" ng-if="info.animalOKWithKids">Ok with Kids?</td>
             <td class="value" ng-if="info.animalOKWithKids == 'Yes'">Yes</td>
+            <td class="value" ng-if="info.animalOKWithKids == 'No'">No</td>
           </tr>
-          <tr>
-            <td class="value" ng-if="info.animalOKWithKids == 'No' && info.animalOKWithDogs == 'No' && info.animalOKWithCats == 'No'">No Cats,<br> Dogs, or Kids</td>
+          <tr ng-if="info.animalOKWithKids == 'No' && info.animalOKWithDogs == 'No' && info.animalOKWithCats == 'No'">
+            <td class="value">No Cats,<br> Dogs, or Kids</td>
           </tr>
         </tbody>
       </table>
