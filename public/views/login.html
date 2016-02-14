@@ -1,18 +1,22 @@
 <div class="form-container">
-    <form name="loginForm" novalidate ng-submit="homeForm.$valid && submitData()">
+    <form name="loginForm" novalidate ng-submit="loginForm.$valid && submitData()">
         <p class="login-p">Login</p>
         <div class="form-elements">
             <div class="username-container">
-                <label class="label-username">Username:</label>
-                <input name="usernameInput" class="login-textfield" type="text" ng-model="data.username" required/>
-                <p ng-show="loginForm.usernameInput.$error.required && loginForm.$submitted">*Username is required</p>
+                <div class="loginSignup-label-holder">
+                    <label class="label-username">Username:</label>
+                    <input name="usernameInput" class="login-textfield" type="text" ng-model="data.username" required/>
+                    <p class="loginSignup-error" ng-show="loginForm.usernameInput.$error.required && loginForm.$submitted">*Username is required</p>
+                </div>
             </p>
             </div>
 
             <div class="password-container">
-                <label class="label-password">Password:</label>
-                <input name="passwordInput" class="login-textfield" type="password" ng-model="data.password" required/>
-                <p ng-show="loginForm.passwordInput.$error.required && loginForm.$submitted">*Password is required</p>
+                <div class="loginSignup-label-holder">
+                    <label class="label-password">Password:</label>
+                    <input name="passwordInput" class="login-textfield" type="password" ng-model="data.password" required/>
+                    <p class="loginSignup-error" ng-show="loginForm.passwordInput.$error.required && loginForm.$submitted">*Password is required</p>
+                </div>
             </div>
             <button class="loginUserBtn">Submit</button>
         </div>

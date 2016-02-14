@@ -30,7 +30,7 @@ app.use('/', index);
 //////////MONGO THINGS/////////////////
 ///////////////////////////////////////
 
-var mongoURI = 'mongodb://localhost:27017/pawfinder';
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/pawfinder' ;
 var mongoDB = mongoose.connect(mongoURI).connection;
 
 ///////////////////////////////////////

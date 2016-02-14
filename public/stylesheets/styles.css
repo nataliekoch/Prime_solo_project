@@ -512,11 +512,19 @@ tr:last-child td{
 }
 
 .username-container{
-  padding: 40px 0 0;
+  padding: 40px 0 20px;
 }
 
-.password-container{
-  padding: 40px 20px;
+.loginSignup-label-holder{
+  width: 335px;
+  margin: auto;
+}
+
+.loginSignup-error{
+  display: inline-block;
+  margin: 0;
+  float: right;
+  color: red;
 }
 
 .newUserBtn, .loginUserBtn{
