@@ -280,13 +280,7 @@ app.factory('apiService', ['$http', function($http){
             "operation": "equals",
             "criteria": breed
           },
-          {
-            "fieldName": "animalSecondaryBreed",
-            "operation": "equals",
-            "criteria": breed
-          },
         ],
-        "filterProcessing": "(1 and 2 and 3 and 4 and 5) or (1 and 2 and 3 and 4 and 6)"
         "fields":
         [
           "animalSecondaryBreed","animalStatus","animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSpecialneeds","animalSex", "animalOrgID"

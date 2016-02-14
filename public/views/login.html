@@ -1,17 +1,20 @@
 <div class="form-container">
-    <form>
+    <form name="loginForm" novalidate ng-submit="homeForm.$valid && submitData()">
         <p class="login-p">Login</p>
         <div class="form-elements">
             <div class="username-container">
                 <label class="label-username">Username:</label>
-                <input class="login-textfield" type="text" ng-model="data.username"/>
+                <input name="usernameInput" class="login-textfield" type="text" ng-model="data.username" required/>
+                <p ng-show="loginForm.usernameInput.$error.required && loginForm.$submitted">*Username is required</p>
+            </p>
             </div>
 
             <div class="password-container">
                 <label class="label-password">Password:</label>
-                <input class="login-textfield" type="password" ng-model="data.password"/>
+                <input name="passwordInput" class="login-textfield" type="password" ng-model="data.password" required/>
+                <p ng-show="loginForm.passwordInput.$error.required && loginForm.$submitted">*Password is required</p>
             </div>
-                <button class="loginUserBtn" ng-click="submitData()">Submit</button>
+            <button class="loginUserBtn">Submit</button>
         </div>
     </form>
     <a href="/signUp">New user? Click here!</a>
