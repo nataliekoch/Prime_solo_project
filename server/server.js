@@ -80,9 +80,7 @@ passport.use('local', new localStrategy({
 
 }));
 
-app.set("port", process.env.PORT || 5000);
-
-var server = app.listen(app.get('port'), function(){
+var server = app.listen(process.env.PORT || 5000, function(){
   var port = server.address().port;
   console.log('Listening on port', app.get('port'));
 });
