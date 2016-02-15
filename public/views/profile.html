@@ -1,4 +1,4 @@
-<div class="profile-header">
+  <div class="profile-header">
   <a class="logo" href="/">PawFinder</a>
 
   <a class="signup" href="/signUp">Sign Up</a>
@@ -61,17 +61,13 @@
             <td class="field">Age range:</td>
             <td class="value">{{info.animalGeneralAge}}</td>
           </tr>
-          <tr ng-if="info.animalBreed">
-            <td class="field">Breed:</td>
-            <td class="value">{{info.animalBreed}}</td>
-          </tr>
           <tr ng-if="info.animalColor">
             <td class="field">Color:</td>
             <td class="value">{{info.animalColor}}</td>
           </tr>
           <tr ng-if="info.animalSizeCurrent > 0">
             <td class="field">Size:</td>
-            <td class="value">{{info.animalSizeCurrent}}</td>
+            <td class="value">{{info.animalSizeCurrent}} lbs</td>
           </tr>
         </tr>
         <tr ng-if="info.animalCoatLength">

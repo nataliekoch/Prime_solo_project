@@ -23,6 +23,7 @@ html {
 }
 
 .result-color{
+  padding-top: 60px;
   background-color: #B2DFDB;
 }
 
@@ -336,8 +337,7 @@ html {
 }
 
 .profile-org-container{
-  border: 1px solid #f1f1f1;
-  border-radius: 3px;
+  border-radius: 25px;
   background: #fdfdfd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.62);
   padding: 23px 17px 17px 26px;
