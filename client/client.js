@@ -49,6 +49,7 @@ app.controller('SignUpController', ['$scope', '$http', '$location', function($sc
   $scope.data = {};
 
   $scope.newUser = function(){
+    console.log("I'm working");
     $http.post('/newUser', $scope.data).then(function(response){
       console.log(response);
       $location.path(response.data);
