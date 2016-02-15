@@ -52,7 +52,7 @@
 <div class="result-color">
   <div class="search-results">
     <div class="animal-containers" ng-repeat="animal in searchResults.data track by $index | json">
-      <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize}} || 'stylesheets/images/Paw-print-2.svg'" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
+      <img class="animal-image" src="{{animal.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400px" width="{{animal.animalPictures[0].resolutionX}} || 300px">
       <div class="animal-searchInfo">
         <p class="search-animalName">{{animal.animalName}}</p>
         <div class="search-breedAndGender">
