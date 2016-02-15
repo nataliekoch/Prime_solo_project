@@ -7,7 +7,7 @@
 
 <div class="profile-container" ng-repeat="info in profileResults.data track by $index | json">
   <div class="profile-image-container">
-    <img class="profile-animal-image" ng-src="{{info.animalPictures[0].urlInsecureFullsize || 'stylesheets/images/Paw-Print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400" width="{{animal.animalPictures[0].resolutionX}} || 300">
+    <img class="profile-animal-image" ng-src="{{info.animalPictures[0].urlSecureFullsize || 'stylesheets/images/Paw-Print-2.svg'}}" height="{{animal.animalPictures[0].resolutionY}} || 400" width="{{animal.animalPictures[0].resolutionX}} || 300">
   </div>
   <div class="content-container">
     <div class="profile-header">

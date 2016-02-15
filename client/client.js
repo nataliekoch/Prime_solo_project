@@ -263,7 +263,7 @@ app.factory('apiService', ['$http', function($http){
         [
           {
             "fieldName": "animalLocationDistance",
-            "operation": "lessthanorequal",
+            "operation": "lessthan",
             "criteria": distance
           },
           {
