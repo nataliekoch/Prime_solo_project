@@ -507,7 +507,7 @@ tr:last-child td{
   width: 400px;
   margin: auto;
   height: 70px;
-  border: 1px solid darkgray;
+  border-bottom: 1px solid;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
   line-height: 60px;
@@ -518,7 +518,6 @@ tr:last-child td{
 .form-elements{
   width: 400px;
   margin: auto;
-  border: 1px solid darkgray;
   height: 300px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -533,10 +532,11 @@ tr:last-child td{
 .signup-textfield, .login-textfield{
   text-decoration: none;
   border-radius: 10px;
-  height: 25px;
+  height: 35px;
   border: 1px solid gray;
   margin-left: 10px;
   width: 200px;
+  font-size: 15px;
 }
 
 .username-container{
@@ -556,6 +556,7 @@ tr:last-child td{
 }
 
 .newUserBtn, .loginUserBtn{
+  color: white;
   background-color: #536DFE;
   font-size: 30px;
   margin-top: 30px;
