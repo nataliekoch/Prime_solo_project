@@ -304,7 +304,7 @@ html {
 
 .profile-container{
   min-height: calc(100vh - 72px);
-  background-color: #B2DFDB;
+  background-color: white: ;
 }
 
 .profile-animal-image{
@@ -332,13 +332,17 @@ html {
 }
 
 .profile-h1{
+  border: 3px solid #00796B;
+  background-color: #009688;
+  border-radius: 25px;
+  color: white;
+  height: 50px;
   font-weight: 600;
-  color: black;
   font-size: 33px;
   line-height: 39px;
   margin: 2px 0 21px;
   float: left;
-  width: 60%;
+  padding: 5px 5px 0 10px;
 }
 
 .profile-org-container{
@@ -404,6 +408,11 @@ html {
 }
 
 .description-header{
+  border: 3px solid #00796B;
+  background-color: #009688;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  color: white;
   line-height: 45px;
   float: left;
   width: 100%;
@@ -439,10 +448,12 @@ html {
 }
 
 .td-animalBreed{
+  border: 3px solid #00796B;
+  background-color: #009688;
+  border-radius: 25px;
   padding: 10px;
   text-align: center;
   font-size: 18px;
-  background-color: #536DFE;
   color: white;
 }
 
