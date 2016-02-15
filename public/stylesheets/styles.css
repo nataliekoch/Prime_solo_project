@@ -235,7 +235,7 @@ html {
 .search-animalSpecialneeds, .search-animalCompatibility{
   border: none;
   height: 70px;
-  width: 300px;
+  width: auto;
   line-height: 70px;
   font-size: 20px;
   text-align: center;
