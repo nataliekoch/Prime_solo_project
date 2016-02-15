@@ -15,7 +15,7 @@
                             <option value="Dog">Dog</option>
                             <option value="Cat">Cat</option>
                         </select>
-                        <p class="home-error" ng-show="homeForm.speciesSelect.$error.required && homeForm.$submitted">*Species is required</p>
+                        <p class="searchform-error" ng-show="homeForm.speciesSelect.$error.required && homeForm.$submitted">*Species is required</p>
                     </div>
                     <div class="label-box">
                         <label class="label">Animal Breed</label>
@@ -23,13 +23,13 @@
                             <option value=""></option>
                         </option>
                     </select>
-                    <p class="home-error" ng-show="homeForm.breedSelect.$error.required && homeForm.$submitted">*Breed is required</p>
+                    <p class="searchform-error" ng-show="homeForm.breedSelect.$error.required && homeForm.$submitted">*Breed is required</p>
                 </div>
 
                 <div class="label-box">
                     <label class="label">Zip Code</label>
                     <input class="zip-input" name="zipInput" type="text" ng-model="data.zip" required/>
-                    <p class="home-error" ng-show="homeForm.zipInput.$error.required && homeForm.$submitted">*Zip Code is required</p>
+                    <p class="searchform-error" ng-show="homeForm.zipInput.$error.required && homeForm.$submitted">*Zip Code is required</p>
                 </div>
                 <button class="submitbtn">Submit</button>
             </form>

@@ -13,15 +13,24 @@ body {
 html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+.header-color{
+  background-color: #607D8B;
+}
+
+.result-color{
+  background-color: #CFD8DC;
 }
 
 .login, .signup {
   display: inline-block;
   text-decoration: none;
   color: white;
-  background-color: rgb(8, 171, 215);
+  background-color: #536DFE;
   height: 50px;
   width: 100px;
   text-align: center;
@@ -39,7 +48,7 @@ html {
 }
 
 .login:active, .signup:active {
-  background-color: rgb(10, 106, 148);
+  background-color: #475dd6;
   color: rgb(203, 203, 203);
 }
 
@@ -66,7 +75,7 @@ html {
   padding-right: 38px;
 }
 
-.home-error{
+.searchform-error{
   margin: 0;
   text-align: left;
   color: red
@@ -132,7 +141,7 @@ html {
   border: none;
   border-radius: 10px;
   height: 30px;
-  background-color: rgb(8, 171, 215);
+  background-color: #536DFE;
   width: 90px;
   margin-left: 15px;
   font-size: 18px;
@@ -155,6 +164,7 @@ html {
 
 
 .search-results{
+  background-color: #CFD8DC;
   column-width: 320px;
   column-gap: 15px;
   -webkit-column-width: 320px;
@@ -163,7 +173,7 @@ html {
   -moz-column-gap: 15px;
 	width: 90%;
 	max-width: 1100px;
-	margin: 50px auto;
+	margin: 0 auto ;
 }
 
 .animal-containers{
@@ -191,11 +201,12 @@ html {
 }
 
 .profile-Btn {
-  opacity: 0.4;
   border: none;
   height: 70px;
   width: 100%;
   font-size: 30px;
+  background-color: #607D8B;
+  color: #FFFFFF;
 }
 
 .profile-Btn:hover{
@@ -240,11 +251,14 @@ html {
 }
 
 .filter{
+  color: white;
   text-align: center;
   font-size: 20px;
+  padding-bottom: 30px;
 }
 
 .filter-select{
+  color: white;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -260,6 +274,9 @@ html {
 /*//////////////////////////////
 ////////////Profile/////////////
 //////////////////////////////*/
+.profile-header{
+  background-color: #607D8B;
+}
 
 .profile-image-container{
   width: 400px;
@@ -268,6 +285,10 @@ html {
   vertical-align: top;
   margin-left: 4%;
   margin-top: 4.7%;
+}
+
+.profile-container{
+  background-color: #CFD8DC;
 }
 
 .profile-animal-image{
@@ -359,10 +380,6 @@ html {
   width: 60%;
 }
 
-.block-holder{
-  height: 400px;
-}
-
 .clearfix{
   font-size: 23px;
   line-height: 26px;
@@ -374,12 +391,16 @@ html {
   line-height: 45px;
   float: left;
   width: 100%;
+  padding-left: 20px;
 }
 
 .description-text{
+  border-radius: 25px;
+  background-color: white;
   font-size: 15px;
   margin: 0 0 5px;
   word-wrap: break-word;
+  padding: 20px;
 }
 
 .tab-panel{
@@ -388,6 +409,7 @@ html {
 }
 
 .animal-table{
+  background-color: #FFFFFF;
   margin: 5px 0 0;
   color: #6a696c;
   font-size: 14px;
@@ -396,6 +418,7 @@ html {
   word-break: break-word;
   width: 240px;
   float: right;
+  margin-bottom: 20px;
 }
 
 .td-animalBreed{
@@ -424,6 +447,7 @@ html {
 }
 
 .field{
+  background-color: #FFFFFF;
   color: rgb(140, 140, 140);
   padding: 6px 2px 8px 11px;
   width: 50%;
@@ -432,6 +456,7 @@ html {
 }
 
 .value{
+  background-color: #FFFFFF;
   color: black;
   width: 50%;
   padding: 10px 10px 8px 11px;
