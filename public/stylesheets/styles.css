@@ -288,6 +288,7 @@ html {
 }
 
 .profile-container{
+  min-height: calc(100vh - 72px);
   background-color: #CFD8DC;
 }
 
@@ -405,7 +406,6 @@ html {
 
 .tab-panel{
   float: right;
-  width: 37%;
 }
 
 .animal-table{
