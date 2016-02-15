@@ -1,44 +1,32 @@
-<!-- <div class="form-container">
-    <form>
-        <p class="signUp-p">Sign Up</p>
-        <div class="form-elements">
-            <div class="username-container">
-                <label class="label-username">Username:</label>
-                <input class="signup-textfield" type="text" ng-model="data.username"/>
-            </div>
+<div class="background-image-signup">
+    <div class="color-block">
+        <a class="logo" href="/">PawFinder</a>
 
-            <div class="password-container">
-                <label class="label-password">Password:</label>
-                <input class="signup-textfield" type="password" ng-model="data.password"/>
-            </div>
-                <button class="newUserBtn" ng-click="newUser()">Submit</button>
-        </div>
-    </form>
-    <a href="/login">Already a user? Click here!</a>
-</div> -->
-
-<div class="form-container">
-    <form name="signupForm" novalidate ng-submit="SignupForm.$valid && newUser()">
-        <p class="signUp-p">Sign Up</p>
-        <div class="form-elements">
-            <div class="username-container">
-                <div class="loginSignup-label-holder">
-                    <label class="label-username">Username:</label>
-                    <input name="usernameInput" class="login-textfield" type="text" ng-model="data.username" required/>
-                    <p class="loginSignup-error" ng-show="signupForm.usernameInput.$error.required && signupForm.$submitted">*Username is required</p>
+        <a class="signup" href="/signUp">Sign Up</a>
+        <a class="login" href="/login">Login</a>
+    </div>
+    <div class="form-container">
+        <form class="signupForm" name="signupForm" novalidate ng-submit="SignupForm.$valid && newUser()">
+            <p class="signUp-p">Sign Up</p>
+            <div class="form-elements">
+                <div class="username-container">
+                    <div class="loginSignup-label-holder">
+                        <label class="label-username">Username:</label>
+                        <input name="usernameInput" class="login-textfield" type="text" ng-model="data.username" required/>
+                        <p class="loginSignup-error" ng-show="signupForm.usernameInput.$error.required && signupForm.$submitted">*Username is required</p>
+                    </div>
+                </p>
                 </div>
-            </p>
-            </div>
 
-            <div class="password-container">
-                <div class="loginSignup-label-holder">
-                    <label class="label-password">Password:</label>
-                    <input name="passwordInput" class="login-textfield" type="password" ng-model="data.password" required/>
-                    <p class="loginSignup-error" ng-show="signupForm.passwordInput.$error.required && signupForm.$submitted">*Password is required</p>
+                <div class="password-container">
+                    <div class="loginSignup-label-holder">
+                        <label class="label-password">Password:</label>
+                        <input name="passwordInput" class="login-textfield" type="password" ng-model="data.password" required/>
+                        <p class="loginSignup-error" ng-show="signupForm.passwordInput.$error.required && signupForm.$submitted">*Password is required</p>
+                    </div>
                 </div>
+                <button class="newUserBtn">Submit</button>
             </div>
-            <button class="newUserBtn">Submit</button>
-        </div>
-    </form>
-    <a href="/signUp">New user? Click here!</a>
+        </form>
+    </div>
 </div>

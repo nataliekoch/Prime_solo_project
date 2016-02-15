@@ -1,29 +1,39 @@
-<h1 class="logo">PawFinder</h1>
+<a class="logo" href="/">PawFinder</a>
 
 <a class="signup" href="/signUp">Sign Up</a>
 <a class="login" href="/login">Login</a>
 
-<div class="search-searchbar">
+<div class="searchbar">
   <h2 class="h2">Find Your New Best Friend</h2>
   <div class="form">
-    <form class="form">
-      <label class="label">Animal Type</label>
-      <select class="select-species" name="speciesSelect" ng-change="pickBreed(data.species)" ng-model="data.species">
-        <option value="Dog">Dog</option>
-        <option value="Cat">Cat</option>
+    <form class="form" name="homeForm" novalidate ng-submit="homeForm.$valid && getPets()">
+      <div class="label-box">
+        <label class="label">Animal Type</label>
+        <select class="select-species" name="speciesSelect" ng-change="pickBreed(data.species)" ng-model="data.species" required>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+        </select>
+        <p class="home-error" ng-show="homeForm.speciesSelect.$error.required && homeForm.$submitted">*Species is required</p>
+      </div>
+      <div class="label-box">
+        <label class="label">Animal Breed</label>
+        <select class="select-breed" name="breedSelect" ng-model="data.breed" ng-options="breed.breedName for breed in breeds" required>
+          <option value=""></option>
+        </option>
       </select>
+      <p class="home-error" ng-show="homeForm.breedSelect.$error.required && homeForm.$submitted">*Breed is required</p>
+    </div>
 
-      <label class="label">Animal Breed</label>
-      <select class="select-breed" ng-model="data.breed" ng-options="breed.breedName for breed in breeds">
-        <option value=""></option>
-      </option>
-    </select>
-
-    <label class="label">Zip Code</label>
-    <input class="zip-input"type="text" ng-model="data.zip"/>
-
-    <button class="submitbtn" ng-click="getPets()">Submit</button>
+    <div class="label-box">
+      <label class="label">Zip Code</label>
+      <input class="zip-input" name="zipInput" type="text" ng-model="data.zip" required/>
+      <p class="home-error" ng-show="homeForm.zipInput.$error.required && homeForm.$submitted">*Zip Code is required</p>
+    </div>
+    <button class="submitbtn">Submit</button>
   </form>
+</div>
+</div>
+
 </div>
 </div>
 <div class="filter">
