@@ -319,6 +319,11 @@ html {
   min-height: 200px;
   max-height: 700px;
   margin: auto;
+  border: 30px solid #B2DFDB;
+}
+
+.profile-animal-image:first-of-type{
+  margin: auto auto 10px;
 }
 
 .content-container{
@@ -338,9 +343,7 @@ html {
 }
 
 .profile-h1{
-  border: 3px solid #00796B;
-  background-color: #009688;
-  color: white;
+  color: #00796B;
   height: 50px;
   font-weight: 600;
   font-size: 33px;
@@ -416,9 +419,7 @@ html {
 }
 
 .description-header{
-  border: 3px solid #00796B;
-  background-color: #009688;
-  color: white;
+  color: #00796B;
   line-height: 45px;
   float: left;
   width: 100%;
@@ -455,11 +456,11 @@ html {
 
 .td-animalBreed{
   border: 3px solid #00796B;
-  background-color: #009688;
+  background-color: #B2DFDB;
   padding: 10px;
   text-align: center;
   font-size: 18px;
-  color: white;
+  color: #00796B;
 }
 
 .th-breed{
