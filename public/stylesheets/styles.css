@@ -441,6 +441,7 @@ html {
 }
 
 .animal-table{
+  width: 230px;
   background-color: #FFFFFF;
   margin: 5px 0 0;
   color: #6a696c;
@@ -448,7 +449,6 @@ html {
   line-height: 17px;
   border: 1px solid #eaeaea;
   word-break: break-word;
-  width: 240px;
   float: right;
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.62);

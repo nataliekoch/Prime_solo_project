@@ -134,7 +134,6 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   .then(
     function(response) {
       $scope.searchResults = response.data;
-      $scope.loading = false;
     }
   );
 
@@ -144,10 +143,8 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
-      console.log("hello")
-      console.log($scope.searchResults.data);
-      console.log(response.data.data);
       $scope.searchResults.data = angular.extend($scope.searchResults.data, response.data.data);
+      $scope.loading = false;
     }
   );
 
