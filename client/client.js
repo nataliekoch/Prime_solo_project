@@ -133,7 +133,6 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   .then(
     function(response) {
       $scope.searchResults = response.data;
-      console.log($scope.searchResults);
     }
   );
 
@@ -143,9 +142,14 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
+      console.log("hello")
+      console.log($scope.searchResults.data);
+      console.log(response.data.data);
       $scope.searchResults.data = angular.extend($scope.searchResults.data, response.data.data);
     }
   );
+
+  $scope.searchResults =
 
   $scope.goToProfile = function(animalID, animalOrgId){
     $location.path('/profile');
@@ -387,7 +391,7 @@ app.factory('SecondaryBreedSearch', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "1000",
+        "resultLimit": "200",
         "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
