@@ -271,7 +271,7 @@ app.factory('apiService', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "100",
+        "resultLimit": "50",
         "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
@@ -390,7 +390,7 @@ app.factory('SecondaryBreedSearch', ['$http', function($http){
       "search":
       {
         "resultStart": "0",
-        "resultLimit": "200",
+        "resultLimit": "100",
         "resultSort": "animalLocationDistance",
         "resultOrder": "asc",
         "filters":
