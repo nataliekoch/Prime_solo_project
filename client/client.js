@@ -116,13 +116,15 @@ app.controller('HomeController', ['$scope', '$location', 'BreedCall', '$http', f
 
 }]);
 
-app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', 'BreedCall', function($scope, $http, $location, apiService, BreedCall){
+app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', 'BreedCall', 'SecondaryBreedSearch', function($scope, $http, $location, apiService, BreedCall, SecondaryBreedSearch){
   var animalSpecies = $location.search().species;
   var animalBreed = $location.search().breed;
   var animalZip = $location.search().zip;
   var animalDistance = $location.search().locationDistance;
 
   var apiUrl = apiService(animalSpecies, animalBreed, animalZip, animalDistance);
+  var apiUrl2 = SecondaryBreedSearch(animalSpecies, animalBreed, animalZip, animalDistance);
+
 
   $http({
     method: 'JSONP',
@@ -130,8 +132,18 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   })
   .then(
     function(response) {
-      console.log(response);
       $scope.searchResults = response.data;
+      console.log($scope.searchResults);
+    }
+  );
+
+  $http({
+    method: 'JSONP',
+    url: apiUrl2
+  })
+  .then(
+    function(response) {
+      $scope.searchResults.data = angular.extend($scope.searchResults.data, response.data.data);
     }
   );
 
@@ -366,6 +378,62 @@ app.factory('OrgCall', ['$http', function($http){
   };
 }]);
 
+app.factory('SecondaryBreedSearch', ['$http', function($http){
+  var urlConstructor = function(species, breed, zip, distance) {
+    var filter = {
+      "apikey":"vngSNgO9",
+      "objectType":"animals",
+      "objectAction":"publicSearch",
+      "search":
+      {
+        "resultStart": "0",
+        "resultLimit": "1000",
+        "resultSort": "animalLocationDistance",
+        "resultOrder": "asc",
+        "filters":
+        [
+          {
+            "fieldName": "animalLocationDistance",
+            "operation": "lessthan",
+            "criteria": distance
+          },
+          {
+            "fieldName": "animalLocation",
+            "operation": "equals",
+            "criteria": zip
+          },
+          {
+            "fieldName": "animalSpecies",
+            "operation": "equals",
+            "criteria": species
+          },
+          {
+            "fieldName": "animalSecondaryBreed",
+            "operation": "equals",
+            "criteria": breed
+          },
+        ],
+        "fields":
+        [
+          "animalSecondaryBreed","animalStatus","animalID","animalPictures","animalSpecies","animalBreed","animalLocation","animalLocationCitystate","animalName","animalOKWithAdults","animalOKWithCats","animalOKWithDogs","animalOKWithKids","animalSpecialneeds","animalSex", "animalOrgID"
+        ]
+      }
+    }
+
+    var encoded = angular.toJson(filter);
+
+    var url = 'https://api.rescuegroups.org/http/json/?callback=JSON_CALLBACK&data='
+    url += encoded;
+
+    return url;
+  }
+
+  return function(species, breed, zip, distance) {
+    var url = urlConstructor(species, breed, zip, distance);
+    return url;
+  };
+}]);
+
 app.factory('BreedCall', ['$http', function($http){
   var urlConstructor = function(species) {
     var filter = {
@@ -402,15 +470,6 @@ app.factory('BreedCall', ['$http', function($http){
     var url = urlConstructor(species);
     return url;
   };
-}]);
-
-
-app.controller('SuccessController', ['$scope', '$http', function($scope, $http){
-
-}]);
-
-app.controller('FailureController', ['$scope', '$http', function($scope, $http){
-
 }]);
 
 app.filter('trust', [

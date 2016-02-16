@@ -334,7 +334,6 @@ html {
 .profile-h1{
   border: 3px solid #00796B;
   background-color: #009688;
-  border-radius: 25px;
   color: white;
   height: 50px;
   font-weight: 600;
@@ -346,7 +345,6 @@ html {
 }
 
 .profile-org-container{
-  border-radius: 25px;
   background: #fdfdfd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.62);
   padding: 23px 17px 17px 26px;
@@ -410,8 +408,6 @@ html {
 .description-header{
   border: 3px solid #00796B;
   background-color: #009688;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
   color: white;
   line-height: 45px;
   float: left;
@@ -421,7 +417,6 @@ html {
 
 .description-text{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.62);
-  border-radius: 25px;
   background-color: white;
   font-size: 15px;
   margin: 0 0 5px;
@@ -450,7 +445,6 @@ html {
 .td-animalBreed{
   border: 3px solid #00796B;
   background-color: #009688;
-  border-radius: 25px;
   padding: 10px;
   text-align: center;
   font-size: 18px;
