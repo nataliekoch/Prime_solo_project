@@ -17,17 +17,17 @@
     </div>
     <div class="profile-org-container" ng-repeat="info in orgResults.data track by $index | json">
       <div class="box">
-        <strong class="title">Location</strong>
+        <strong class="title"><i class="fa fa-map"></i>Location</strong>
         <div class="holder">
           <p>{{info.orgCity}}, {{info.orgState}}</p>
         </div>
-        <strong class="title">Animal Org ID:</strong>
+        <strong class="title"><i class="fa fa-tag"></i>Org ID:</strong>
         <div class="holder">
           <p ng-repeat="info in profileResults.data track by $index | json">{{info.animalName}}</p>
         </div>
       </div>
       <div class="profile-org-info">
-        <strong class="title">Organization:</strong>
+        <strong class="title"><i class="fa fa-home"></i>Organization:</strong>
         <div class="holder">
           <p class="org-address"><a class="org-link"href="{{info.orgWebsiteUrl}}">{{info.orgName}}</a></p>
           <p class="org-address">{{info.orgAddress}}</p>

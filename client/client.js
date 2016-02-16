@@ -117,6 +117,7 @@ app.controller('HomeController', ['$scope', '$location', 'BreedCall', '$http', f
 }]);
 
 app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService', 'BreedCall', 'SecondaryBreedSearch', function($scope, $http, $location, apiService, BreedCall, SecondaryBreedSearch){
+  $scope.loading = true;
   var animalSpecies = $location.search().species;
   var animalBreed = $location.search().breed;
   var animalZip = $location.search().zip;
@@ -133,6 +134,7 @@ app.controller('SearchController', ['$scope', '$http', '$location' ,'apiService'
   .then(
     function(response) {
       $scope.searchResults = response.data;
+      $scope.loading = false;
     }
   );
 

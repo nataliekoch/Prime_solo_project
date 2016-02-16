@@ -24,7 +24,7 @@ html {
 
 .result-color{
   padding-top: 60px;
-  background-color: #B2DFDB;
+  background-color: white;
 }
 
 .login, .signup {
@@ -179,7 +179,7 @@ html {
 
 
 .search-results{
-  background-color: #B2DFDB;
+  background-color: white;
   column-width: 320px;
   column-gap: 15px;
   -webkit-column-width: 320px;
@@ -233,6 +233,12 @@ html {
   font-size: 30px;
   margin-top: 0;
   padding-bottom: 10px;
+}
+
+.fa.fa-spinner{
+  color: #00796B;
+  display: block;
+  text-align: center;
 }
 
 .search-animalName, .search-breedAndGender, .search-animal-cityAndState{
@@ -354,6 +360,10 @@ html {
   width: 100%;
 }
 
+.fa-map:before, .fa-tag:before, .fa-home:before{
+  padding-right: 10px;
+}
+
 .box{
   width: 34.3333%;
   float: left;
@@ -413,6 +423,7 @@ html {
   float: left;
   width: 100%;
   padding-left: 20px;
+  margin-bottom: 10px;
 }
 
 .description-text{
